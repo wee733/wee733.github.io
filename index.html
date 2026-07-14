@@ -1,5 +1,747 @@
-<h1>Bozhao Li</h1>
-<p>Ph.D. Student</p>
-<p>Affiliation: Beihang</p>
-<p>Email: 你的 OpenReview 注册邮箱</p>
-<p>Research Interests: Robotics, Reinforcement Learning, and Sim-to-Real</p>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Bozhao Li — Ph.D. student at Beihang University researching robotics, reinforcement learning, embodied intelligence, and autonomous systems.">
+  <meta name="author" content="Bozhao Li">
+  <title>Bozhao Li | Robotics Researcher</title>
+
+  <style>
+    :root {
+      --background: #f7f9fc;
+      --surface: #ffffff;
+      --surface-soft: #f0f5fb;
+      --text: #172033;
+      --muted: #5d687a;
+      --primary: #1e5f99;
+      --primary-dark: #174c7a;
+      --border: #dfe6ef;
+      --shadow: 0 14px 40px rgba(23, 32, 51, 0.08);
+      --radius: 18px;
+      --max-width: 1080px;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      color: var(--text);
+      background: var(--background);
+      font-family: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI",
+        Roboto, Helvetica, Arial, sans-serif;
+      font-size: 16px;
+      line-height: 1.7;
+    }
+
+    a {
+      color: var(--primary);
+      text-decoration: none;
+    }
+
+    a:hover {
+      color: var(--primary-dark);
+      text-decoration: underline;
+    }
+
+    .container {
+      width: min(calc(100% - 40px), var(--max-width));
+      margin: 0 auto;
+    }
+
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      border-bottom: 1px solid rgba(223, 230, 239, 0.9);
+      background: rgba(247, 249, 252, 0.92);
+      backdrop-filter: blur(14px);
+    }
+
+    .nav {
+      min-height: 68px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+    }
+
+    .brand {
+      color: var(--text);
+      font-size: 18px;
+      font-weight: 750;
+      letter-spacing: -0.02em;
+    }
+
+    .brand:hover {
+      color: var(--text);
+      text-decoration: none;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 24px;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .nav-links a {
+      color: var(--muted);
+      font-size: 14px;
+      font-weight: 650;
+    }
+
+    .nav-links a:hover {
+      color: var(--primary);
+      text-decoration: none;
+    }
+
+    .hero {
+      padding: 88px 0 58px;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.5fr) minmax(260px, 0.7fr);
+      gap: 54px;
+      align-items: center;
+    }
+
+    .eyebrow {
+      margin: 0 0 12px;
+      color: var(--primary);
+      font-size: 14px;
+      font-weight: 750;
+      letter-spacing: 0.11em;
+      text-transform: uppercase;
+    }
+
+    h1,
+    h2,
+    h3 {
+      margin-top: 0;
+      line-height: 1.25;
+      letter-spacing: -0.025em;
+    }
+
+    h1 {
+      margin-bottom: 14px;
+      font-size: clamp(42px, 7vw, 70px);
+      font-weight: 800;
+    }
+
+    h2 {
+      margin-bottom: 12px;
+      font-size: clamp(28px, 4vw, 38px);
+    }
+
+    h3 {
+      margin-bottom: 8px;
+      font-size: 19px;
+    }
+
+    .hero-title {
+      margin: 0 0 20px;
+      color: var(--muted);
+      font-size: clamp(19px, 2.5vw, 24px);
+      font-weight: 500;
+    }
+
+    .hero-summary {
+      max-width: 720px;
+      margin: 0;
+      color: var(--muted);
+      font-size: 18px;
+    }
+
+    .hero-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 30px;
+    }
+
+    .button {
+      display: inline-flex;
+      min-height: 44px;
+      align-items: center;
+      justify-content: center;
+      padding: 10px 18px;
+      border: 1px solid var(--primary);
+      border-radius: 10px;
+      color: #ffffff;
+      background: var(--primary);
+      font-weight: 700;
+    }
+
+    .button:hover {
+      color: #ffffff;
+      background: var(--primary-dark);
+      text-decoration: none;
+    }
+
+    .button.secondary {
+      color: var(--primary);
+      background: transparent;
+    }
+
+    .button.secondary:hover {
+      color: var(--primary-dark);
+      background: var(--surface-soft);
+    }
+
+    .profile-card {
+      padding: 28px;
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      background: var(--surface);
+      box-shadow: var(--shadow);
+    }
+
+    .profile-monogram {
+      width: 88px;
+      height: 88px;
+      display: grid;
+      place-items: center;
+      margin-bottom: 22px;
+      border-radius: 50%;
+      color: #ffffff;
+      background: var(--primary);
+      font-size: 28px;
+      font-weight: 800;
+      letter-spacing: 0.03em;
+    }
+
+    .profile-card p {
+      margin: 6px 0;
+      color: var(--muted);
+    }
+
+    main section {
+      padding: 58px 0;
+      scroll-margin-top: 82px;
+    }
+
+    .section-heading {
+      max-width: 760px;
+      margin-bottom: 30px;
+    }
+
+    .section-heading p {
+      margin: 0;
+      color: var(--muted);
+    }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1.35fr 0.65fr;
+      gap: 28px;
+    }
+
+    .panel {
+      padding: 30px;
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      background: var(--surface);
+    }
+
+    .panel p:first-child {
+      margin-top: 0;
+    }
+
+    .panel p:last-child {
+      margin-bottom: 0;
+    }
+
+    .facts {
+      display: grid;
+      gap: 18px;
+      margin: 0;
+    }
+
+    .fact dt {
+      color: var(--muted);
+      font-size: 13px;
+      font-weight: 750;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .fact dd {
+      margin: 3px 0 0;
+      font-weight: 650;
+    }
+
+    .card-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 22px;
+    }
+
+    .card {
+      min-height: 190px;
+      padding: 26px;
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      background: var(--surface);
+      transition: transform 160ms ease, box-shadow 160ms ease;
+    }
+
+    .card:hover {
+      transform: translateY(-3px);
+      box-shadow: var(--shadow);
+    }
+
+    .card-number {
+      display: inline-block;
+      margin-bottom: 20px;
+      color: var(--primary);
+      font-size: 13px;
+      font-weight: 800;
+      letter-spacing: 0.09em;
+    }
+
+    .card p {
+      margin: 0;
+      color: var(--muted);
+    }
+
+    .project-list,
+    .publication-list {
+      display: grid;
+      gap: 18px;
+    }
+
+    .project,
+    .publication {
+      padding: 26px 28px;
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      background: var(--surface);
+    }
+
+    .project p,
+    .publication p {
+      margin: 8px 0 0;
+      color: var(--muted);
+    }
+
+    .tag-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 16px;
+    }
+
+    .tag {
+      padding: 5px 10px;
+      border-radius: 999px;
+      color: var(--primary-dark);
+      background: var(--surface-soft);
+      font-size: 13px;
+      font-weight: 650;
+    }
+
+    .publication-placeholder {
+      border-style: dashed;
+      text-align: center;
+    }
+
+    .contact-box {
+      display: grid;
+      grid-template-columns: 1.3fr 0.7fr;
+      gap: 28px;
+      align-items: center;
+      padding: 34px;
+      border-radius: var(--radius);
+      color: #ffffff;
+      background: #183b5b;
+    }
+
+    .contact-box h2,
+    .contact-box p {
+      margin-bottom: 8px;
+    }
+
+    .contact-box p {
+      color: #dce9f4;
+    }
+
+    .contact-links {
+      display: grid;
+      justify-items: start;
+      gap: 8px;
+    }
+
+    .contact-links a {
+      color: #ffffff;
+      font-weight: 700;
+    }
+
+    footer {
+      padding: 28px 0 42px;
+      color: var(--muted);
+      font-size: 14px;
+      text-align: center;
+    }
+
+    @media (max-width: 800px) {
+      .nav {
+        min-height: 62px;
+      }
+
+      .nav-links {
+        display: none;
+      }
+
+      .hero {
+        padding-top: 60px;
+      }
+
+      .hero-grid,
+      .about-grid,
+      .contact-box {
+        grid-template-columns: 1fr;
+      }
+
+      .profile-card {
+        max-width: 520px;
+      }
+
+      .card-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 520px) {
+      .container {
+        width: min(calc(100% - 28px), var(--max-width));
+      }
+
+      .hero {
+        padding-top: 48px;
+      }
+
+      main section {
+        padding: 44px 0;
+      }
+
+      .panel,
+      .card,
+      .project,
+      .publication {
+        padding: 22px;
+      }
+    }
+
+    @media print {
+      .site-header,
+      .hero-links {
+        display: none;
+      }
+
+      body {
+        background: #ffffff;
+      }
+
+      .hero {
+        padding-top: 20px;
+      }
+
+      .card,
+      .panel,
+      .project,
+      .publication,
+      .profile-card {
+        box-shadow: none;
+        break-inside: avoid;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <header class="site-header">
+    <nav class="container nav" aria-label="Main navigation">
+      <a class="brand" href="#top">Bozhao Li</a>
+      <ul class="nav-links">
+        <li><a href="#about">About</a></li>
+        <li><a href="#research">Research</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#publications">Publications</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main id="top">
+    <section class="hero">
+      <div class="container hero-grid">
+        <div>
+          <p class="eyebrow">Robotics · Embodied Intelligence</p>
+          <h1>Bozhao Li</h1>
+          <p class="hero-title">Ph.D. Student at Beihang University</p>
+          <p class="hero-summary">
+            I work on intelligent robotic systems that perceive, learn, and act
+            in the physical world, with a focus on reinforcement learning,
+            legged robots, autonomous aerial systems, and sim-to-real transfer.
+          </p>
+
+          <div class="hero-links">
+            <!-- Replace the email address below with the email used for OpenReview. -->
+            <a class="button" href="mailto:YOUR_EMAIL@buaa.edu.cn">Email me</a>
+            <a class="button secondary" href="https://github.com/wee733">GitHub</a>
+            <!-- Replace # with your Google Scholar URL when available. -->
+            <a class="button secondary" href="#">Google Scholar</a>
+          </div>
+        </div>
+
+        <aside class="profile-card" aria-label="Profile summary">
+          <!-- Replace this monogram with a portrait later if desired. -->
+          <div class="profile-monogram" aria-hidden="true">BL</div>
+          <h2>Profile</h2>
+          <p>Ph.D. Student</p>
+          <p>Beihang University</p>
+          <p>Beijing, China</p>
+          <!-- This address should exactly match the email used on OpenReview. -->
+          <p><a href="mailto:YOUR_EMAIL@buaa.edu.cn">YOUR_EMAIL@buaa.edu.cn</a></p>
+        </aside>
+      </div>
+    </section>
+
+    <section id="about">
+      <div class="container">
+        <div class="section-heading">
+          <p class="eyebrow">About</p>
+          <h2>Researching robots for complex real-world environments</h2>
+        </div>
+
+        <div class="about-grid">
+          <div class="panel">
+            <p>
+              I am a Ph.D. student at Beihang University. My research explores
+              learning-based methods for autonomous robots, particularly systems
+              that combine perception, decision-making, locomotion, and
+              manipulation.
+            </p>
+            <p>
+              My current work spans quadruped loco-manipulation, reinforcement
+              learning, embodied intelligence, autonomous unmanned aerial
+              vehicles, multi-robot cooperation, and reliable deployment from
+              simulation to real robotic platforms.
+            </p>
+          </div>
+
+          <div class="panel">
+            <dl class="facts">
+              <div class="fact">
+                <dt>Position</dt>
+                <dd>Ph.D. Student</dd>
+              </div>
+              <div class="fact">
+                <dt>Institution</dt>
+                <dd>Beihang University</dd>
+              </div>
+              <div class="fact">
+                <dt>Field</dt>
+                <dd>Robotics and Artificial Intelligence</dd>
+              </div>
+              <div class="fact">
+                <dt>Location</dt>
+                <dd>Beijing, China</dd>
+              </div>
+            </dl>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="research">
+      <div class="container">
+        <div class="section-heading">
+          <p class="eyebrow">Research Interests</p>
+          <h2>Core areas</h2>
+          <p>
+            My research connects robot learning with deployable autonomous
+            systems across ground and aerial platforms.
+          </p>
+        </div>
+
+        <div class="card-grid">
+          <article class="card">
+            <span class="card-number">01</span>
+            <h3>Embodied Intelligence</h3>
+            <p>
+              Integrated perception, reasoning, decision-making, and control for
+              robots interacting with dynamic physical environments.
+            </p>
+          </article>
+
+          <article class="card">
+            <span class="card-number">02</span>
+            <h3>Reinforcement Learning for Robotics</h3>
+            <p>
+              Policy learning, robust control, and adaptation for locomotion,
+              manipulation, and whole-body robotic behaviors.
+            </p>
+          </article>
+
+          <article class="card">
+            <span class="card-number">03</span>
+            <h3>Legged Loco-Manipulation</h3>
+            <p>
+              Whole-body coordination of quadruped robots and manipulators for
+              stable, accurate, and task-oriented physical interaction.
+            </p>
+          </article>
+
+          <article class="card">
+            <span class="card-number">04</span>
+            <h3>Autonomous Aerial Systems</h3>
+            <p>
+              UAV perception, navigation, trajectory planning, cooperative
+              networking, and reliable operation in real environments.
+            </p>
+          </article>
+
+          <article class="card">
+            <span class="card-number">05</span>
+            <h3>Robot Perception and Navigation</h3>
+            <p>
+              LiDAR, vision, state estimation, mapping, and planning for
+              autonomous operation in complex and unstructured spaces.
+            </p>
+          </article>
+
+          <article class="card">
+            <span class="card-number">06</span>
+            <h3>Sim-to-Real Transfer</h3>
+            <p>
+              Bridging simulation and hardware through robust learning,
+              system identification, adaptation, and deployment-aware control.
+            </p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="projects">
+      <div class="container">
+        <div class="section-heading">
+          <p class="eyebrow">Selected Projects</p>
+          <h2>Current research directions</h2>
+        </div>
+
+        <div class="project-list">
+          <article class="project">
+            <h3>Quadruped Loco-Manipulation</h3>
+            <p>
+              Learning and control for a quadruped robot equipped with a
+              manipulator, targeting stable whole-body motion and accurate
+              end-effector interaction.
+            </p>
+            <div class="tag-list">
+              <span class="tag">Quadruped Robots</span>
+              <span class="tag">Whole-Body Control</span>
+              <span class="tag">Reinforcement Learning</span>
+              <span class="tag">Sim-to-Real</span>
+            </div>
+          </article>
+
+          <article class="project">
+            <h3>Autonomous and Cooperative UAV Systems</h3>
+            <p>
+              Perception, navigation, networking, and cooperative autonomy for
+              unmanned aerial vehicles operating over real communication links.
+            </p>
+            <div class="tag-list">
+              <span class="tag">UAV</span>
+              <span class="tag">Autonomous Navigation</span>
+              <span class="tag">Multi-Robot Systems</span>
+              <span class="tag">Cooperative Networking</span>
+            </div>
+          </article>
+
+          <article class="project">
+            <h3>Embodied Robot Learning</h3>
+            <p>
+              Learning-based robotic systems that integrate perception and
+              control to perform robust tasks in unstructured environments.
+            </p>
+            <div class="tag-list">
+              <span class="tag">Embodied AI</span>
+              <span class="tag">Robot Learning</span>
+              <span class="tag">Perception</span>
+              <span class="tag">Manipulation</span>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="publications">
+      <div class="container">
+        <div class="section-heading">
+          <p class="eyebrow">Publications</p>
+          <h2>Selected publications</h2>
+          <p>
+            Add peer-reviewed papers, preprints, and project pages here.
+          </p>
+        </div>
+
+        <div class="publication-list">
+          <!-- Duplicate this article block for each publication. -->
+          <article class="publication publication-placeholder">
+            <h3>Publication list coming soon</h3>
+            <p>
+              Replace this block with: author list, paper title, venue, year,
+              and links to the paper, code, video, or project page.
+            </p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact">
+      <div class="container">
+        <div class="contact-box">
+          <div>
+            <p class="eyebrow">Contact</p>
+            <h2>Research and collaboration</h2>
+            <p>
+              For academic discussions or potential collaboration, please get
+              in touch by email.
+            </p>
+          </div>
+
+          <div class="contact-links">
+            <!-- Replace these placeholder URLs before publishing them publicly. -->
+            <a href="mailto:YOUR_EMAIL@buaa.edu.cn">YOUR_EMAIL@buaa.edu.cn</a>
+            <a href="https://github.com/wee733">github.com/wee733</a>
+            <a href="#">Google Scholar</a>
+            <a href="#">ORCID</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      © <span id="year"></span> Bozhao Li. Last updated July 2026.
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
