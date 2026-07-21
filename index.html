@@ -66,8 +66,8 @@
       position: sticky;
       top: 0;
       z-index: 50;
-      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-      background: rgba(9, 17, 31, 0.9);
+      border-bottom: 1px solid rgba(220, 227, 235, 0.9);
+      background: rgba(255, 255, 255, 0.94);
       backdrop-filter: blur(18px);
     }
 
@@ -80,7 +80,7 @@
     }
 
     .brand {
-      color: #ffffff;
+      color: var(--ink);
       font-weight: 800;
       letter-spacing: -0.02em;
     }
@@ -99,7 +99,7 @@
     }
 
     .nav-links a {
-      color: #bac6d8;
+      color: var(--muted);
       font-size: 14px;
       font-weight: 650;
       transition: color 160ms ease;
@@ -107,15 +107,15 @@
 
     .nav-links a:hover,
     .nav-links a:focus-visible {
-      color: #ffffff;
+      color: var(--ink);
     }
 
     .hero {
       position: relative;
       overflow: hidden;
-      padding: 72px 0 66px;
-      color: #ffffff;
-      background: linear-gradient(135deg, #0b1422 0%, #122238 100%);
+      padding: 54px 0 50px;
+      color: var(--ink);
+      background: #ffffff;
     }
 
     .hero::before {
@@ -125,9 +125,9 @@
     .hero-grid {
       position: relative;
       display: grid;
-      grid-template-columns: minmax(0, 1fr) 210px;
-      gap: 48px;
-      align-items: center;
+      grid-template-columns: 180px minmax(0, 1fr);
+      gap: 32px;
+      align-items: start;
     }
 
     .kicker {
@@ -165,9 +165,9 @@
     }
 
     h1 {
-      max-width: 840px;
-      margin-bottom: 16px;
-      font-size: clamp(46px, 7vw, 68px);
+      max-width: none;
+      margin-bottom: 28px;
+      font-size: clamp(36px, 5vw, 48px);
       font-weight: 800;
     }
 
@@ -243,12 +243,12 @@
 
     .portrait-card {
       overflow: hidden;
-      width: 210px;
+      width: 180px;
       margin: 0;
-      justify-self: end;
-      border: 1px solid rgba(255, 255, 255, 0.12);
-      border-radius: 10px;
-      background: #172438;
+      justify-self: start;
+      border: 1px solid var(--line);
+      border-radius: 4px;
+      background: #eef1f4;
     }
 
     .portrait-card img {
@@ -257,11 +257,32 @@
       object-fit: cover;
     }
 
-    .portrait-card figcaption {
-      padding: 12px 14px;
-      color: #c5d0dd;
-      font-size: 12px;
-      letter-spacing: 0.02em;
+    .intro-copy {
+      max-width: 810px;
+    }
+
+    .intro-copy p {
+      margin-bottom: 16px;
+      color: #293548;
+      font-size: 16px;
+      line-height: 1.65;
+    }
+
+    .intro-copy p:last-child {
+      margin-bottom: 0;
+    }
+
+    .intro-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      color: var(--muted) !important;
+      font-size: 14px !important;
+    }
+
+    .intro-links a {
+      color: var(--blue);
+      font-weight: 700;
     }
 
     main section:not(.hero) {
@@ -696,15 +717,14 @@
     }
 
     @media (max-width: 920px) {
-      .hero-grid,
       .section-top,
-      .about-grid,
       .contact-panel {
         grid-template-columns: 1fr;
       }
 
       .hero-grid {
-        gap: 42px;
+        grid-template-columns: 160px minmax(0, 1fr);
+        gap: 28px;
       }
 
       .portrait-card {
@@ -740,17 +760,21 @@
         gap: 14px;
       }
 
-      .nav-links li:nth-child(1),
-      .nav-links li:nth-child(4) {
+      .nav-links li:nth-child(3) {
         display: none;
       }
 
       .hero {
-        padding: 58px 0 50px;
+        padding: 44px 0 42px;
+      }
+
+      .hero-grid {
+        grid-template-columns: 140px minmax(0, 1fr);
+        gap: 24px;
       }
 
       .portrait-card {
-        width: min(150px, 100%);
+        width: min(140px, 100%);
       }
 
       main section:not(.hero) {
@@ -787,7 +811,13 @@
 
     @media (max-width: 480px) {
       h1 {
-        font-size: 44px;
+        margin-bottom: 20px;
+        font-size: 36px;
+      }
+
+      .hero-grid {
+        grid-template-columns: 1fr;
+        gap: 18px;
       }
 
       .paper {
@@ -839,7 +869,6 @@
     <nav class="container nav" aria-label="Main navigation">
       <a class="brand" href="#top">Bozhao Li<span>.</span></a>
       <ul class="nav-links">
-        <li><a href="#about">About</a></li>
         <li><a href="#projects">Projects</a></li>
         <li><a href="#papers">Papers</a></li>
         <li><a href="#education">Education</a></li>
@@ -850,77 +879,34 @@
 
   <main id="top">
     <section class="hero">
-      <div class="container hero-grid">
-        <div>
-          <p class="kicker">Robotics · Embodied Intelligence</p>
-          <h1>Bozhao Li</h1>
-          <p class="hero-role">Robotics researcher &amp; system builder</p>
-          <p class="hero-summary">
-            I build learning-enabled robotic systems that connect perception, planning,
-            locomotion, and manipulation—from simulation to deployable hardware.
-          </p>
-          <p class="hero-summary zh" lang="zh-CN">
-            我关注从仿真到真实部署的智能机器人系统，将感知、规划、运动与操作整合为可验证的完整链路。
-          </p>
-          <div class="hero-actions">
-            <a class="button" href="#projects">Explore projects</a>
-            <a class="button secondary" href="https://github.com/wee733" target="_blank" rel="noreferrer">GitHub profile</a>
-          </div>
-        </div>
-
-        <figure class="portrait-card">
-          <img src="media/myself.jpg" alt="Portrait of Bozhao Li" width="1001" height="1230">
-          <figcaption>Bozhao Li · Beihang University</figcaption>
-        </figure>
-      </div>
-    </section>
-
-    <section id="about">
       <div class="container">
-        <div class="section-top">
-          <p class="section-index">01 / About</p>
-          <div class="section-copy">
-            <h2>Research across learning, control, and deployment.</h2>
+        <h1>Bozhao Li</h1>
+        <div class="hero-grid">
+          <figure class="portrait-card">
+            <img src="media/myself.jpg" alt="Portrait of Bozhao Li" width="1001" height="1230">
+          </figure>
+
+          <div class="intro-copy">
             <p>
-              My work spans quadruped loco-manipulation, autonomous aerial systems,
-              robot perception, multi-agent coordination, and sim-to-real transfer.
+              I am an M.S. student in Cyberspace Security at Beihang University. I received
+              my B.S. in Computer and Information Science from Southwest University.
+            </p>
+            <p>
+              My research lies at the intersection of robot learning, control, and
+              autonomous systems, with a focus on quadruped loco-manipulation, multi-UAV
+              coordination, and motion planning in complex environments.
+            </p>
+            <p>
+              I am particularly interested in building complete robotic pipelines that
+              connect reinforcement learning with state estimation, ROS 2, GPU-accelerated
+              simulation, and real-hardware validation.
+            </p>
+            <p class="intro-links">
+              <a href="mailto:libozhaovo@buaa.edu.cn">Email</a>
+              <span>·</span>
+              <a href="https://github.com/wee733" target="_blank" rel="noreferrer">GitHub</a>
             </p>
           </div>
-        </div>
-
-        <div class="about-grid">
-          <article class="panel">
-            <p>
-              I am an M.S. student in Cyberspace Security at Beihang University.
-              I am interested in autonomous systems that must operate under physical,
-              sensing, communication, and safety constraints—not only in isolated
-              algorithms, but as complete and reproducible robotic stacks.
-            </p>
-            <p class="zh-copy" lang="zh-CN">
-              我是北京航空航天大学网络空间安全专业硕士研究生。我的研究聚焦具身智能与自主系统，尤其关注机器人在真实物理约束、感知误差、通信条件和安全边界下的可部署性，并通过完整系统验证将算法连接到真实任务。
-            </p>
-          </article>
-
-          <aside class="panel">
-            <dl class="facts">
-              <div class="fact">
-                <dt>Position</dt>
-                <dd>M.S. Student, 2024–2027</dd>
-              </div>
-              <div class="fact">
-                <dt>Institution</dt>
-                <dd>Beihang University</dd>
-              </div>
-              <div class="fact">
-                <dt>Field</dt>
-                <dd>Cyberspace Security</dd>
-              </div>
-              <div class="fact">
-                <dt>Focus</dt>
-                <dd>Robotics &amp; Autonomous Systems</dd>
-              </div>
-            </dl>
-          </aside>
         </div>
       </div>
     </section>
@@ -928,7 +914,7 @@
     <section class="dark-section" id="projects">
       <div class="container">
         <div class="section-top">
-          <p class="section-index">02 / Projects</p>
+          <p class="section-index">01 / Projects</p>
           <div class="section-copy">
             <h2>Robotic systems built as complete pipelines.</h2>
             <p>
@@ -1085,7 +1071,7 @@
     <section class="papers" id="papers">
       <div class="container">
         <div class="section-top">
-          <p class="section-index">03 / Papers</p>
+          <p class="section-index">02 / Papers</p>
           <div class="section-copy">
             <h2>Research manuscripts.</h2>
             <p>
@@ -1153,7 +1139,7 @@
     <section id="education">
       <div class="container">
         <div class="section-top">
-          <p class="section-index">04 / Education</p>
+          <p class="section-index">03 / Education</p>
           <div class="section-copy">
             <h2>Academic background.</h2>
             <p>Training in computing, security, and autonomous intelligent systems.</p>
