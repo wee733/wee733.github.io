@@ -3,23 +3,30 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Bozhao Li — M.S. student in Cyberspace Security at Beihang University, researching robotics, reinforcement learning, embodied intelligence, and autonomous systems.">
+  <meta name="description" content="Bozhao Li is a robotics researcher at Beihang University working on embodied intelligence, legged loco-manipulation, autonomous aerial systems, and deployable robot learning.">
   <meta name="author" content="Bozhao Li">
-  <title>Bozhao Li | Robotics Researcher</title>
+  <meta name="theme-color" content="#09111f">
+  <meta property="og:title" content="Bozhao Li | Robotics &amp; Embodied Intelligence">
+  <meta property="og:description" content="Research, robotic systems, and selected manuscripts by Bozhao Li.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://wee733.github.io/">
+  <title>Bozhao Li | Robotics &amp; Embodied Intelligence</title>
 
   <style>
     :root {
-      --background: #f7f9fc;
+      --ink: #101828;
+      --muted: #58647a;
+      --line: #dce3eb;
+      --paper: #f5f7f9;
       --surface: #ffffff;
-      --surface-soft: #f0f5fb;
-      --text: #172033;
-      --muted: #5d687a;
-      --primary: #1e5f99;
-      --primary-dark: #174c7a;
-      --border: #dfe6ef;
-      --shadow: 0 14px 40px rgba(23, 32, 51, 0.08);
-      --radius: 18px;
-      --max-width: 1080px;
+      --navy: #09111f;
+      --navy-soft: #111d31;
+      --blue: #1769ff;
+      --cyan: #42d3ff;
+      --green: #adf55b;
+      --max: 1180px;
+      --radius: 22px;
+      --shadow: 0 24px 70px rgba(9, 17, 31, 0.12);
     }
 
     * {
@@ -32,56 +39,54 @@
 
     body {
       margin: 0;
-      color: var(--text);
-      background: var(--background);
-      font-family: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI",
-        Roboto, Helvetica, Arial, sans-serif;
+      color: var(--ink);
+      background: var(--paper);
+      font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
       font-size: 16px;
-      line-height: 1.7;
+      line-height: 1.65;
+      text-rendering: optimizeLegibility;
     }
 
     a {
-      color: var(--primary);
+      color: inherit;
       text-decoration: none;
     }
 
-    a:hover {
-      color: var(--primary-dark);
-      text-decoration: underline;
+    img {
+      display: block;
+      max-width: 100%;
     }
 
     .container {
-      width: min(calc(100% - 40px), var(--max-width));
-      margin: 0 auto;
+      width: min(calc(100% - 40px), var(--max));
+      margin-inline: auto;
     }
 
     .site-header {
       position: sticky;
       top: 0;
-      z-index: 20;
-      border-bottom: 1px solid rgba(223, 230, 239, 0.9);
-      background: rgba(247, 249, 252, 0.92);
-      backdrop-filter: blur(14px);
+      z-index: 50;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+      background: rgba(9, 17, 31, 0.9);
+      backdrop-filter: blur(18px);
     }
 
     .nav {
-      min-height: 68px;
+      min-height: 70px;
       display: flex;
       align-items: center;
       justify-content: space-between;
-      gap: 24px;
+      gap: 28px;
     }
 
     .brand {
-      color: var(--text);
-      font-size: 18px;
-      font-weight: 750;
+      color: #ffffff;
+      font-weight: 800;
       letter-spacing: -0.02em;
     }
 
-    .brand:hover {
-      color: var(--text);
-      text-decoration: none;
+    .brand span {
+      color: var(--green);
     }
 
     .nav-links {
@@ -94,374 +99,813 @@
     }
 
     .nav-links a {
-      color: var(--muted);
+      color: #bac6d8;
       font-size: 14px;
       font-weight: 650;
+      transition: color 160ms ease;
     }
 
-    .nav-links a:hover {
-      color: var(--primary);
-      text-decoration: none;
+    .nav-links a:hover,
+    .nav-links a:focus-visible {
+      color: #ffffff;
     }
 
     .hero {
-      padding: 88px 0 58px;
+      position: relative;
+      overflow: hidden;
+      padding: 108px 0 88px;
+      color: #ffffff;
+      background:
+        radial-gradient(circle at 82% 15%, rgba(66, 211, 255, 0.18), transparent 25%),
+        radial-gradient(circle at 12% 90%, rgba(23, 105, 255, 0.22), transparent 30%),
+        var(--navy);
+    }
+
+    .hero::before {
+      position: absolute;
+      inset: 0;
+      content: "";
+      opacity: 0.24;
+      background-image:
+        linear-gradient(rgba(255, 255, 255, 0.055) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 255, 255, 0.055) 1px, transparent 1px);
+      background-size: 54px 54px;
+      mask-image: linear-gradient(to bottom, black, transparent 88%);
     }
 
     .hero-grid {
+      position: relative;
       display: grid;
-      grid-template-columns: minmax(0, 1.5fr) minmax(260px, 0.7fr);
-      gap: 54px;
-      align-items: center;
+      grid-template-columns: minmax(0, 1.45fr) minmax(280px, 0.55fr);
+      gap: 72px;
+      align-items: end;
     }
 
-    .eyebrow {
-      margin: 0 0 12px;
-      color: var(--primary);
-      font-size: 14px;
-      font-weight: 750;
-      letter-spacing: 0.11em;
+    .kicker {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin: 0 0 20px;
+      color: var(--green);
+      font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
       text-transform: uppercase;
+    }
+
+    .kicker::before {
+      width: 32px;
+      height: 2px;
+      content: "";
+      background: currentColor;
+    }
+
+    h1,
+    h2,
+    h3,
+    p {
+      margin-top: 0;
     }
 
     h1,
     h2,
     h3 {
-      margin-top: 0;
-      line-height: 1.25;
-      letter-spacing: -0.025em;
+      line-height: 1.16;
+      letter-spacing: -0.035em;
     }
 
     h1 {
-      margin-bottom: 14px;
-      font-size: clamp(42px, 7vw, 70px);
-      font-weight: 800;
+      max-width: 840px;
+      margin-bottom: 22px;
+      font-size: clamp(52px, 8vw, 94px);
+      font-weight: 830;
     }
 
     h2 {
-      margin-bottom: 12px;
-      font-size: clamp(28px, 4vw, 38px);
+      margin-bottom: 14px;
+      font-size: clamp(34px, 5vw, 54px);
+      font-weight: 800;
     }
 
     h3 {
-      margin-bottom: 8px;
-      font-size: 19px;
+      margin-bottom: 12px;
+      font-size: 22px;
+      font-weight: 780;
     }
 
-    .hero-title {
-      margin: 0 0 20px;
-      color: var(--muted);
-      font-size: clamp(19px, 2.5vw, 24px);
-      font-weight: 500;
+    .hero-role {
+      margin-bottom: 22px;
+      color: #d9e3f0;
+      font-size: clamp(20px, 2.5vw, 29px);
+      font-weight: 550;
+      letter-spacing: -0.02em;
     }
 
     .hero-summary {
-      max-width: 720px;
-      margin: 0;
-      color: var(--muted);
+      max-width: 760px;
+      margin-bottom: 10px;
+      color: #aebdd0;
       font-size: 18px;
     }
 
-    .hero-links {
+    .hero-summary.zh {
+      color: #8fa2ba;
+      font-size: 15px;
+    }
+
+    .hero-actions {
       display: flex;
       flex-wrap: wrap;
       gap: 12px;
-      margin-top: 30px;
+      margin-top: 34px;
     }
 
     .button {
+      min-height: 48px;
       display: inline-flex;
-      min-height: 44px;
       align-items: center;
       justify-content: center;
-      padding: 10px 18px;
-      border: 1px solid var(--primary);
-      border-radius: 10px;
-      color: #ffffff;
-      background: var(--primary);
-      font-weight: 700;
+      padding: 11px 20px;
+      border: 1px solid var(--green);
+      border-radius: 999px;
+      color: var(--navy);
+      background: var(--green);
+      font-size: 14px;
+      font-weight: 780;
+      transition: transform 160ms ease, background 160ms ease;
     }
 
-    .button:hover {
-      color: #ffffff;
-      background: var(--primary-dark);
-      text-decoration: none;
+    .button:hover,
+    .button:focus-visible {
+      transform: translateY(-2px);
+      background: #c5ff81;
     }
 
     .button.secondary {
-      color: var(--primary);
+      color: #ffffff;
+      border-color: #526078;
       background: transparent;
     }
 
-    .button.secondary:hover {
-      color: var(--primary-dark);
-      background: var(--surface-soft);
+    .button.secondary:hover,
+    .button.secondary:focus-visible {
+      background: rgba(255, 255, 255, 0.08);
     }
 
-    .profile-card {
+    .hero-aside {
       padding: 28px;
-      border: 1px solid var(--border);
+      border: 1px solid rgba(255, 255, 255, 0.12);
       border-radius: var(--radius);
-      background: var(--surface);
-      box-shadow: var(--shadow);
+      background: rgba(255, 255, 255, 0.055);
     }
 
-    .profile-monogram {
-      width: 88px;
-      height: 88px;
+    .hero-aside-label {
+      margin-bottom: 20px;
+      color: #8ea1b8;
+      font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+      font-size: 12px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
+
+    .hero-stat {
       display: grid;
-      place-items: center;
-      margin-bottom: 22px;
-      border-radius: 50%;
-      color: #ffffff;
-      background: var(--primary);
-      font-size: 28px;
-      font-weight: 800;
-      letter-spacing: 0.03em;
+      grid-template-columns: 52px 1fr;
+      gap: 12px;
+      padding: 16px 0;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
     }
 
-    .profile-card p {
-      margin: 6px 0;
-      color: var(--muted);
+    .hero-stat strong {
+      color: var(--green);
+      font-size: 26px;
+      line-height: 1;
     }
 
-    main section {
-      padding: 58px 0;
-      scroll-margin-top: 82px;
+    .hero-stat span {
+      color: #c5d0df;
+      font-size: 14px;
+      line-height: 1.35;
     }
 
-    .section-heading {
-      max-width: 760px;
-      margin-bottom: 30px;
+    main section:not(.hero) {
+      padding: 88px 0;
+      scroll-margin-top: 76px;
     }
 
-    .section-heading p {
-      margin: 0;
-      color: var(--muted);
-    }
-
-    .about-grid {
+    .section-top {
       display: grid;
-      grid-template-columns: 1.35fr 0.65fr;
-      gap: 28px;
+      grid-template-columns: 0.7fr 1.3fr;
+      gap: 54px;
+      align-items: start;
+      margin-bottom: 42px;
     }
 
-    .panel {
-      padding: 30px;
-      border: 1px solid var(--border);
-      border-radius: var(--radius);
-      background: var(--surface);
-    }
-
-    .panel p:first-child {
-      margin-top: 0;
-    }
-
-    .panel p:last-child {
-      margin-bottom: 0;
-    }
-
-    .facts {
-      display: grid;
-      gap: 18px;
-      margin: 0;
-    }
-
-    .fact dt {
-      color: var(--muted);
+    .section-index {
+      color: var(--blue);
+      font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
       font-size: 13px;
       font-weight: 750;
       letter-spacing: 0.08em;
       text-transform: uppercase;
     }
 
-    .fact dd {
-      margin: 3px 0 0;
-      font-weight: 650;
+    .section-copy p {
+      max-width: 760px;
+      margin-bottom: 0;
+      color: var(--muted);
+      font-size: 17px;
     }
 
-    .card-grid {
+    .about-grid {
       display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
+      grid-template-columns: minmax(0, 1.35fr) minmax(260px, 0.65fr);
+      gap: 24px;
+    }
+
+    .panel {
+      padding: 34px;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: var(--surface);
+    }
+
+    .panel p:last-child {
+      margin-bottom: 0;
+    }
+
+    .panel .zh-copy {
+      color: var(--muted);
+      font-size: 15px;
+    }
+
+    .facts {
+      display: grid;
+      gap: 22px;
+      margin: 0;
+    }
+
+    .fact dt {
+      margin-bottom: 3px;
+      color: var(--muted);
+      font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+      font-size: 12px;
+      font-weight: 750;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .fact dd {
+      margin: 0;
+      font-weight: 700;
+    }
+
+    .dark-section {
+      color: #ffffff;
+      background: var(--navy);
+    }
+
+    .dark-section .section-index {
+      color: var(--green);
+    }
+
+    .dark-section .section-copy p {
+      color: #9fb0c5;
+    }
+
+    .project-grid {
+      display: grid;
+      grid-template-columns: repeat(12, minmax(0, 1fr));
       gap: 22px;
     }
 
-    .card {
-      min-height: 190px;
-      padding: 26px;
-      border: 1px solid var(--border);
+    .project-card {
+      grid-column: span 6;
+      position: relative;
+      overflow: hidden;
+      min-height: 100%;
+      display: flex;
+      flex-direction: column;
+      border: 1px solid #25334a;
       border-radius: var(--radius);
-      background: var(--surface);
-      transition: transform 160ms ease, box-shadow 160ms ease;
+      background: var(--navy-soft);
+      transition: transform 180ms ease, border-color 180ms ease, box-shadow 180ms ease;
     }
 
-    .card:hover {
-      transform: translateY(-3px);
-      box-shadow: var(--shadow);
+    .project-card:hover,
+    .project-card:focus-within {
+      transform: translateY(-4px);
+      border-color: #47617f;
+      box-shadow: 0 24px 70px rgba(0, 0, 0, 0.26);
     }
 
-    .card-number {
-      display: inline-block;
-      margin-bottom: 20px;
-      color: var(--primary);
-      font-size: 13px;
-      font-weight: 800;
-      letter-spacing: 0.09em;
-    }
-
-    .card p {
-      margin: 0;
-      color: var(--muted);
-    }
-
-    .project-list,
-    .publication-list {
+    .project-card.featured {
+      grid-column: span 12;
       display: grid;
-      gap: 18px;
+      grid-template-columns: minmax(0, 0.95fr) minmax(0, 1.05fr);
     }
 
-    .project,
-    .publication {
-      padding: 26px 28px;
-      border: 1px solid var(--border);
-      border-radius: 14px;
-      background: var(--surface);
+    .project-visual {
+      min-height: 240px;
+      overflow: hidden;
+      background: #17243a;
     }
 
-    .project p,
-    .publication p {
-      margin: 8px 0 0;
-      color: var(--muted);
+    .featured .project-visual {
+      min-height: 100%;
+      order: 2;
+    }
+
+    .project-visual img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .project-visual.blueprint {
+      position: relative;
+      display: grid;
+      place-items: center;
+      color: #dce8f7;
+      background:
+        linear-gradient(rgba(66, 211, 255, 0.1) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(66, 211, 255, 0.1) 1px, transparent 1px),
+        #10213a;
+      background-size: 30px 30px;
+    }
+
+    .blueprint-mark {
+      display: grid;
+      place-items: center;
+      width: 152px;
+      height: 152px;
+      border: 1px solid rgba(66, 211, 255, 0.5);
+      border-radius: 50%;
+      font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+      font-size: 42px;
+      font-weight: 800;
+      letter-spacing: -0.08em;
+      box-shadow: 0 0 0 18px rgba(66, 211, 255, 0.035);
+    }
+
+    .project-body {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      padding: 30px;
+    }
+
+    .featured .project-body {
+      padding: 42px;
+    }
+
+    .project-meta {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      margin-bottom: 22px;
+      color: #8fa3bc;
+      font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+      font-size: 12px;
+      text-transform: uppercase;
+    }
+
+    .status {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      color: var(--green);
+    }
+
+    .status::before {
+      width: 7px;
+      height: 7px;
+      content: "";
+      border-radius: 50%;
+      background: currentColor;
+      box-shadow: 0 0 0 4px rgba(173, 245, 91, 0.1);
+    }
+
+    .status.wip {
+      color: #ffc96b;
+    }
+
+    .project-card h3 {
+      color: #ffffff;
+      font-size: clamp(23px, 3vw, 31px);
+      overflow-wrap: anywhere;
+    }
+
+    .project-en {
+      margin-bottom: 12px;
+      color: #bdcadb;
+    }
+
+    .project-zh {
+      margin-bottom: 20px;
+      color: #879bb4;
+      font-size: 14px;
     }
 
     .tag-list {
       display: flex;
       flex-wrap: wrap;
       gap: 8px;
-      margin-top: 16px;
+      margin-top: auto;
+      padding-top: 8px;
     }
 
     .tag {
       padding: 5px 10px;
+      border: 1px solid #34445c;
       border-radius: 999px;
-      color: var(--primary-dark);
-      background: var(--surface-soft);
-      font-size: 13px;
-      font-weight: 650;
-    }
-
-    .publication-placeholder {
-      border-style: dashed;
-      text-align: center;
-    }
-
-    .contact-box {
-      display: grid;
-      grid-template-columns: 1.3fr 0.7fr;
-      gap: 28px;
-      align-items: center;
-      padding: 34px;
-      border-radius: var(--radius);
-      color: #ffffff;
-      background: #183b5b;
-    }
-
-    .contact-box h2,
-    .contact-box p {
-      margin-bottom: 8px;
-    }
-
-    .contact-box p {
-      color: #dce9f4;
-    }
-
-    .contact-links {
-      display: grid;
-      justify-items: start;
-      gap: 8px;
-    }
-
-    .contact-links a {
-      color: #ffffff;
+      color: #aebed1;
+      font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+      font-size: 11px;
       font-weight: 700;
     }
 
-    footer {
-      padding: 28px 0 42px;
-      color: var(--muted);
+    .repo-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      margin-top: 24px;
+      color: var(--green);
       font-size: 14px;
+      font-weight: 750;
+    }
+
+    .repo-link::after {
+      content: "↗";
+      font-size: 16px;
+    }
+
+    .subsection-title {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      margin: 52px 0 22px;
+      color: #dce6f2;
+      font-size: 15px;
+      letter-spacing: 0.02em;
+    }
+
+    .subsection-title::after {
+      flex: 1;
+      height: 1px;
+      content: "";
+      background: #26364d;
+    }
+
+    .foundation-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 22px;
+    }
+
+    .foundation-card {
+      display: grid;
+      grid-template-columns: 118px 1fr;
+      gap: 22px;
+      align-items: center;
+      padding: 24px;
+      border: 1px solid #25334a;
+      border-radius: 18px;
+      background: #0f1a2c;
+    }
+
+    .foundation-mark {
+      aspect-ratio: 1;
+      display: grid;
+      place-items: center;
+      padding: 16px;
+      border-radius: 15px;
+      color: #ffffff;
+      background: #192840;
+      font-size: 30px;
+      font-weight: 820;
+    }
+
+    .foundation-mark img {
+      width: 100%;
+      max-height: 64px;
+      object-fit: contain;
+      filter: brightness(0) invert(1);
+    }
+
+    .fork-label {
+      display: inline-block;
+      margin-bottom: 9px;
+      color: #ffc96b;
+      font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+      font-size: 11px;
+      font-weight: 750;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .foundation-card h3 {
+      margin-bottom: 8px;
+      color: #ffffff;
+      font-size: 19px;
+    }
+
+    .foundation-card p {
+      margin-bottom: 7px;
+      color: #9eafc3;
+      font-size: 14px;
+    }
+
+    .foundation-card .project-zh {
+      margin-bottom: 0;
+      color: #7f93ab;
+      font-size: 13px;
+    }
+
+    .papers {
+      background: #eaf0f5;
+    }
+
+    .paper-list {
+      counter-reset: papers;
+      display: grid;
+      border-top: 1px solid #cbd5df;
+    }
+
+    .paper {
+      counter-increment: papers;
+      display: grid;
+      grid-template-columns: 72px 1fr;
+      gap: 24px;
+      align-items: start;
+      padding: 30px 0;
+      border-bottom: 1px solid #cbd5df;
+    }
+
+    .paper::before {
+      content: "0" counter(papers);
+      color: var(--blue);
+      font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+      font-size: 14px;
+      font-weight: 800;
+    }
+
+    .paper h3 {
+      max-width: 940px;
+      margin: 0;
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: clamp(21px, 3vw, 29px);
+      font-weight: 500;
+      line-height: 1.32;
+      letter-spacing: -0.018em;
+    }
+
+    .education-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 22px;
+    }
+
+    .education-card {
+      padding: 30px;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: var(--surface);
+    }
+
+    .education-card .date {
+      margin-bottom: 16px;
+      color: var(--blue);
+      font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+      font-size: 12px;
+      font-weight: 750;
+    }
+
+    .education-card p {
+      margin-bottom: 0;
+      color: var(--muted);
+    }
+
+    .contact-section {
+      padding-bottom: 0 !important;
+      background: var(--paper);
+    }
+
+    .contact-panel {
+      position: relative;
+      overflow: hidden;
+      display: grid;
+      grid-template-columns: minmax(0, 1.25fr) minmax(260px, 0.75fr);
+      gap: 44px;
+      align-items: center;
+      padding: 52px;
+      border-radius: 28px;
+      color: #ffffff;
+      background: var(--blue);
+      box-shadow: var(--shadow);
+    }
+
+    .contact-panel::after {
+      position: absolute;
+      right: -120px;
+      bottom: -160px;
+      width: 390px;
+      height: 390px;
+      content: "";
+      border: 70px solid rgba(255, 255, 255, 0.09);
+      border-radius: 50%;
+    }
+
+    .contact-panel h2 {
+      margin-bottom: 8px;
+    }
+
+    .contact-panel p {
+      margin-bottom: 0;
+      color: #dce8ff;
+    }
+
+    .contact-links {
+      position: relative;
+      z-index: 1;
+      display: grid;
+      gap: 10px;
+    }
+
+    .contact-links a {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      padding: 13px 16px;
+      border: 1px solid rgba(255, 255, 255, 0.28);
+      border-radius: 12px;
+      color: #ffffff;
+      background: rgba(255, 255, 255, 0.08);
+      font-weight: 700;
+    }
+
+    .contact-links a::after {
+      content: "↗";
+    }
+
+    footer {
+      padding: 38px 0;
+      color: var(--muted);
+      font-size: 13px;
       text-align: center;
     }
 
-    @media (max-width: 800px) {
+    footer a {
+      color: var(--blue);
+      font-weight: 700;
+    }
+
+    @media (max-width: 920px) {
+      .hero-grid,
+      .section-top,
+      .about-grid,
+      .contact-panel {
+        grid-template-columns: 1fr;
+      }
+
+      .hero-grid {
+        gap: 42px;
+      }
+
+      .hero-aside {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 14px;
+      }
+
+      .hero-aside-label {
+        grid-column: 1 / -1;
+        margin-bottom: 0;
+      }
+
+      .hero-stat {
+        grid-template-columns: 42px 1fr;
+        border-top: 0;
+      }
+
+      .section-top {
+        gap: 14px;
+      }
+
+      .project-card.featured {
+        grid-template-columns: 1fr;
+      }
+
+      .featured .project-visual {
+        min-height: 330px;
+        order: initial;
+      }
+
+      .foundation-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 700px) {
+      .container {
+        width: min(calc(100% - 28px), var(--max));
+      }
+
       .nav {
         min-height: 62px;
       }
 
       .nav-links {
+        gap: 14px;
+      }
+
+      .nav-links li:nth-child(1),
+      .nav-links li:nth-child(4) {
         display: none;
       }
 
       .hero {
-        padding-top: 60px;
+        padding: 76px 0 64px;
       }
 
-      .hero-grid,
-      .about-grid,
-      .contact-box {
+      .hero-aside {
         grid-template-columns: 1fr;
       }
 
-      .profile-card {
-        max-width: 520px;
+      main section:not(.hero) {
+        padding: 64px 0;
       }
 
-      .card-grid {
+      .project-card,
+      .project-card.featured {
+        grid-column: span 12;
+      }
+
+      .featured .project-body,
+      .project-body {
+        padding: 26px;
+      }
+
+      .education-grid {
         grid-template-columns: 1fr;
+      }
+
+      .contact-panel {
+        padding: 32px 24px;
       }
     }
 
-    @media (max-width: 520px) {
-      .container {
-        width: min(calc(100% - 28px), var(--max-width));
+    @media (max-width: 480px) {
+      h1 {
+        font-size: 50px;
       }
 
-      .hero {
-        padding-top: 48px;
+      .foundation-card {
+        grid-template-columns: 1fr;
       }
 
-      main section {
-        padding: 44px 0;
+      .foundation-mark {
+        width: 86px;
       }
 
-      .panel,
-      .card,
-      .project,
-      .publication {
-        padding: 22px;
+      .paper {
+        grid-template-columns: 42px 1fr;
+        gap: 12px;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html {
+        scroll-behavior: auto;
+      }
+
+      *,
+      *::before,
+      *::after {
+        transition-duration: 0.01ms !important;
       }
     }
 
     @media print {
       .site-header,
-      .hero-links {
+      .hero-actions {
         display: none;
       }
 
-      body {
+      .hero,
+      .dark-section {
+        color: var(--ink);
         background: #ffffff;
       }
 
-      .hero {
-        padding-top: 20px;
-      }
-
-      .card,
-      .panel,
-      .project,
-      .publication,
-      .profile-card {
-        box-shadow: none;
+      .project-card,
+      .foundation-card {
+        color: var(--ink);
+        border-color: var(--line);
+        background: #ffffff;
         break-inside: avoid;
       }
     }
@@ -471,13 +915,12 @@
 <body>
   <header class="site-header">
     <nav class="container nav" aria-label="Main navigation">
-      <a class="brand" href="#top">Bozhao Li</a>
+      <a class="brand" href="#top">Bozhao Li<span>.</span></a>
       <ul class="nav-links">
         <li><a href="#about">About</a></li>
-        <li><a href="#education">Education</a></li>
-        <li><a href="#research">Research</a></li>
         <li><a href="#projects">Projects</a></li>
-        <li><a href="#publications">Publications</a></li>
+        <li><a href="#papers">Papers</a></li>
+        <li><a href="#education">Education</a></li>
         <li><a href="#contact">Contact</a></li>
       </ul>
     </nav>
@@ -487,59 +930,67 @@
     <section class="hero">
       <div class="container hero-grid">
         <div>
-          <p class="eyebrow">Robotics · Embodied Intelligence</p>
+          <p class="kicker">Robotics · Embodied Intelligence</p>
           <h1>Bozhao Li</h1>
-          <p class="hero-title">M.S. Student in Cyberspace Security at Beihang University</p>
+          <p class="hero-role">Robotics researcher &amp; system builder</p>
           <p class="hero-summary">
-            I work on intelligent robotic systems that perceive, learn, and act
-            in the physical world, with a focus on reinforcement learning,
-            legged robots, autonomous aerial systems, and sim-to-real transfer.
+            I build learning-enabled robotic systems that connect perception, planning,
+            locomotion, and manipulation—from simulation to deployable hardware.
           </p>
-
-          <div class="hero-links">
-            <a class="button" href="mailto:libozhaovo@buaa.edu.cn">Email me</a>
-            <a class="button secondary" href="https://github.com/wee733">GitHub</a>
+          <p class="hero-summary zh" lang="zh-CN">
+            我关注从仿真到真实部署的智能机器人系统，将感知、规划、运动与操作整合为可验证的完整链路。
+          </p>
+          <div class="hero-actions">
+            <a class="button" href="#projects">Explore projects</a>
+            <a class="button secondary" href="https://github.com/wee733" target="_blank" rel="noreferrer">GitHub profile</a>
           </div>
         </div>
 
-        <aside class="profile-card" aria-label="Profile summary">
-          <!-- Replace this monogram with a portrait later if desired. -->
-          <div class="profile-monogram" aria-hidden="true">BL</div>
-          <h2>Profile</h2>
-          <p>M.S. Student</p>
-          <p>Beihang University</p>
-          <p>Cyberspace Security</p>
-          <p>Beijing, China</p>
-          <p><a href="mailto:libozhaovo@buaa.edu.cn">libozhaovo@buaa.edu.cn</a></p>
+        <aside class="hero-aside" aria-label="Research profile summary">
+          <p class="hero-aside-label">Research snapshot</p>
+          <div class="hero-stat">
+            <strong>05</strong>
+            <span>Original robotics repositories</span>
+          </div>
+          <div class="hero-stat">
+            <strong>04</strong>
+            <span>Research manuscripts</span>
+          </div>
+          <div class="hero-stat">
+            <strong>01</strong>
+            <span>Goal: robots that work beyond demos</span>
+          </div>
         </aside>
       </div>
     </section>
 
     <section id="about">
       <div class="container">
-        <div class="section-heading">
-          <p class="eyebrow">About</p>
-          <h2>Researching robots for complex real-world environments</h2>
+        <div class="section-top">
+          <p class="section-index">01 / About</p>
+          <div class="section-copy">
+            <h2>Research across learning, control, and deployment.</h2>
+            <p>
+              My work spans quadruped loco-manipulation, autonomous aerial systems,
+              robot perception, multi-agent coordination, and sim-to-real transfer.
+            </p>
+          </div>
         </div>
 
         <div class="about-grid">
-          <div class="panel">
+          <article class="panel">
             <p>
-              I am an M.S. student in Cyberspace Security at Beihang University
-              (Beijing University of Aeronautics and Astronautics). My research
-              explores intelligent and networked autonomous systems, particularly
-              robots that combine perception, decision-making, locomotion,
-              manipulation, and communication.
+              I am an M.S. student in Cyberspace Security at Beihang University.
+              I am interested in autonomous systems that must operate under physical,
+              sensing, communication, and safety constraints—not only in isolated
+              algorithms, but as complete and reproducible robotic stacks.
             </p>
-            <p>
-              My current work spans quadruped loco-manipulation, reinforcement
-              learning, embodied intelligence, autonomous unmanned aerial
-              vehicles, multi-robot cooperation, and reliable deployment from
-              simulation to real robotic platforms.
+            <p class="zh-copy" lang="zh-CN">
+              我是北京航空航天大学网络空间安全专业硕士研究生。我的研究聚焦具身智能与自主系统，尤其关注机器人在真实物理约束、感知误差、通信条件和安全边界下的可部署性，并通过完整系统验证将算法连接到真实任务。
             </p>
-          </div>
+          </article>
 
-          <div class="panel">
+          <aside class="panel">
             <dl class="facts">
               <div class="fact">
                 <dt>Position</dt>
@@ -554,209 +1005,264 @@
                 <dd>Cyberspace Security</dd>
               </div>
               <div class="fact">
-                <dt>Location</dt>
-                <dd>Beijing, China</dd>
+                <dt>Focus</dt>
+                <dd>Robotics &amp; Autonomous Systems</dd>
               </div>
             </dl>
-          </div>
+          </aside>
         </div>
       </div>
     </section>
 
+    <section class="dark-section" id="projects">
+      <div class="container">
+        <div class="section-top">
+          <p class="section-index">02 / Projects</p>
+          <div class="section-copy">
+            <h2>Robotic systems built as complete pipelines.</h2>
+            <p>
+              Each project below is linked to its repository. Descriptions are based on
+              the current READMEs and distinguish original integrations from upstream forks.
+            </p>
+          </div>
+        </div>
+
+        <div class="project-grid">
+          <article class="project-card featured">
+            <div class="project-visual blueprint" aria-hidden="true">
+              <div class="blueprint-mark">B2+R5</div>
+            </div>
+            <div class="project-body">
+              <div class="project-meta">
+                <span>Python · Isaac Sim</span>
+                <span class="status">Active</span>
+              </div>
+              <h3>B2Arx_Isaac_Sim</h3>
+              <p class="project-en">
+                A reproducible Isaac Sim workspace for a B2 quadruped with an ARX R5 arm.
+                It integrates the official ZED X simulation stream, Isaac ROS Nvblox,
+                Nav2, and a replaceable reinforcement-learning locomotion policy into a
+                verified perception-to-joint-control pipeline.
+              </p>
+              <p class="project-zh" lang="zh-CN">
+                面向 B2 四足机器人与 ARX R5 机械臂的一体化 Isaac Sim 工作区。项目将官方 ZED X 仿真流、Isaac ROS Nvblox、Nav2 与可替换的强化学习运动策略连接起来，完成从感知、建图、导航指令到关节控制的端到端验证。
+              </p>
+              <div class="tag-list">
+                <span class="tag">Quadruped</span>
+                <span class="tag">Loco-Manipulation</span>
+                <span class="tag">Nvblox</span>
+                <span class="tag">Nav2</span>
+                <span class="tag">RL Policy</span>
+              </div>
+              <a class="repo-link" href="https://github.com/wee733/B2Arx_Isaac_Sim" target="_blank" rel="noreferrer">View repository</a>
+            </div>
+          </article>
+
+          <article class="project-card">
+            <div class="project-body">
+              <div class="project-meta">
+                <span>Python · ROS 2</span>
+                <span class="status">Active</span>
+              </div>
+              <h3>isaac_ros_manipulation_arx_r5a</h3>
+              <p class="project-en">
+                A patch-free ROS 2 overlay for physical ARX R5A pick-and-place. It connects
+                RealSense and AprilTag perception to NVIDIA's behavior tree, Nvblox ESDF,
+                cuMotion, and MoveIt while keeping the upstream Isaac ROS repository unchanged.
+              </p>
+              <p class="project-zh" lang="zh-CN">
+                面向真实 ARX R5A 抓取任务的无补丁 ROS 2 Overlay。它将 RealSense、AprilTag 感知与 NVIDIA 官方行为树、Nvblox ESDF、cuMotion 和 MoveIt 连接起来，同时保持上游 Isaac ROS 仓库不被修改。
+              </p>
+              <div class="tag-list">
+                <span class="tag">Pick &amp; Place</span>
+                <span class="tag">AprilTag</span>
+                <span class="tag">Behavior Tree</span>
+                <span class="tag">Nvblox ESDF</span>
+              </div>
+              <a class="repo-link" href="https://github.com/wee733/isaac_ros_manipulation_arx_r5a" target="_blank" rel="noreferrer">View repository</a>
+            </div>
+          </article>
+
+          <article class="project-card">
+            <div class="project-body">
+              <div class="project-meta">
+                <span>Python · Jetson AGX Thor</span>
+                <span class="status">Active</span>
+              </div>
+              <h3>Isaac_Ros_CuMotion_ArxR5a</h3>
+              <p class="project-en">
+                A community integration for controlling a physical ARX R5A through its
+                vendor CAN driver with ros2_control, MoveIt 2, RViz, and NVIDIA Isaac ROS
+                cuMotion. It provides the robot model, hardware adapter, and planning stack.
+              </p>
+              <p class="project-zh" lang="zh-CN">
+                面向真实 ARX R5A 的社区集成项目：保留厂商 CAN 驱动负责底层通信，并提供机器人模型、ros2_control 硬件适配、MoveIt 2 配置及 Isaac ROS cuMotion GPU 规划链路。
+              </p>
+              <div class="tag-list">
+                <span class="tag">cuMotion</span>
+                <span class="tag">MoveIt 2</span>
+                <span class="tag">ros2_control</span>
+                <span class="tag">Hardware</span>
+              </div>
+              <a class="repo-link" href="https://github.com/wee733/Isaac_Ros_CuMotion_ArxR5a" target="_blank" rel="noreferrer">View repository</a>
+            </div>
+          </article>
+
+          <article class="project-card featured">
+            <div class="project-visual">
+              <img src="media/project-covers/arx-r5-isaac-sim.png" alt="ARX R5A cuMotion planning in RViz alongside execution in Isaac Sim" loading="lazy">
+            </div>
+            <div class="project-body">
+              <div class="project-meta">
+                <span>Python · Isaac Sim 5.1</span>
+                <span class="status">Verified</span>
+              </div>
+              <h3>arx-r5-isaac-sim</h3>
+              <p class="project-en">
+                A standalone ARX R5A simulation that closes the loop from GPU motion
+                planning through MoveIt and ros2_control to PhysX execution and ROS 2 state
+                feedback. Arm and gripper actions, mimic joints, and status feedback are
+                validated end to end.
+              </p>
+              <p class="project-zh" lang="zh-CN">
+                独立的 ARX R5A Isaac Sim 仿真项目，打通 cuMotion GPU 规划、MoveIt、ros2_control、PhysX 执行与 ROS 2 状态回传闭环，并完成机械臂与夹爪 Action、mimic 关节和状态反馈的端到端验证。
+              </p>
+              <div class="tag-list">
+                <span class="tag">Isaac Sim 5.1</span>
+                <span class="tag">GPU Planning</span>
+                <span class="tag">PhysX</span>
+                <span class="tag">ROS 2 Bridge</span>
+              </div>
+              <a class="repo-link" href="https://github.com/wee733/arx-r5-isaac-sim" target="_blank" rel="noreferrer">View repository</a>
+            </div>
+          </article>
+
+          <article class="project-card">
+            <div class="project-body">
+              <div class="project-meta">
+                <span>Jetson Thor · Vision</span>
+                <span class="status wip">Work in progress</span>
+              </div>
+              <h3>Thor_nvidia_LocateAnything-3B</h3>
+              <p class="project-en">
+                A planned deployment workspace for running NVIDIA LocateAnything-3B on
+                Jetson AGX Thor. The repository currently records the project direction;
+                implementation and reproducible instructions have not yet been published.
+              </p>
+              <p class="project-zh" lang="zh-CN">
+                计划在 Jetson AGX Thor 上部署 NVIDIA LocateAnything-3B 的工程工作区。目前仓库用于记录项目方向，代码与可复现部署说明尚未公开。
+              </p>
+              <div class="tag-list">
+                <span class="tag">LocateAnything-3B</span>
+                <span class="tag">Jetson Thor</span>
+                <span class="tag">Deployment</span>
+              </div>
+              <a class="repo-link" href="https://github.com/wee733/Thor_nvidia_LocateAnything-3B" target="_blank" rel="noreferrer">View repository</a>
+            </div>
+          </article>
+        </div>
+
+        <h3 class="subsection-title">Engineering foundations / 工程基础</h3>
+        <div class="foundation-grid">
+          <a class="foundation-card" href="https://github.com/wee733/R5" target="_blank" rel="noreferrer">
+            <div class="foundation-mark" aria-hidden="true">R5</div>
+            <div>
+              <span class="fork-label">Fork · ARXroboticsX/R5</span>
+              <h3>ARX R5 SDK Foundation</h3>
+              <p>
+                Vendor SDK reference for CAN setup, Python, ROS 1/2 control, and VR/ALOHA teleoperation.
+              </p>
+              <p class="project-zh" lang="zh-CN">
+                ARX 官方 R5 SDK 的个人 Fork，作为 CAN 配置、Python、ROS 1/2 控制与 VR/ALOHA 遥操作的底层工程参考。
+              </p>
+            </div>
+          </a>
+
+          <a class="foundation-card" href="https://github.com/wee733/PX4-Autopilot" target="_blank" rel="noreferrer">
+            <div class="foundation-mark">
+              <img src="media/project-covers/px4-logo.svg" alt="PX4 logo" loading="lazy">
+            </div>
+            <div>
+              <span class="fork-label">Fork · PX4/PX4-Autopilot</span>
+              <h3>PX4 Autopilot Foundation</h3>
+              <p>
+                Personal fork of the modular open-source flight stack used as a foundation for UAV control, simulation, MAVLink, and ROS 2 integration.
+              </p>
+              <p class="project-zh" lang="zh-CN">
+                PX4 开源飞控的个人 Fork，作为无人机控制、仿真、MAVLink 通信与 ROS 2 集成的基础平台。
+              </p>
+            </div>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <section class="papers" id="papers">
+      <div class="container">
+        <div class="section-top">
+          <p class="section-index">03 / Papers</p>
+          <div class="section-copy">
+            <h2>Research manuscripts.</h2>
+            <p>
+              Titles are listed for research overview only. Abstracts and public links will
+              be added after the manuscripts are ready for public release.
+            </p>
+          </div>
+        </div>
+
+        <div class="paper-list">
+          <article class="paper">
+            <h3>Odometry-Guided Command-Space Drift Correction for a Frozen RL Quadruped-Arm Policy</h3>
+          </article>
+          <article class="paper">
+            <h3>Security-Enhanced Formation Tracking Control for Networked Swarm Systems via Quantized Encryption-Decryption</h3>
+          </article>
+          <article class="paper">
+            <h3>FormationDiffuser: Boundary-Consistent Diffusion for Long-Horizon 3D Multi-UAV Reconfiguration</h3>
+          </article>
+          <article class="paper">
+            <h3>IRA: Interception-Risk-Aware Trajectory Planning for MAV Evasion from Multiple Pursuers in Cluttered Environments</h3>
+          </article>
+        </div>
+      </div>
+    </section>
 
     <section id="education">
       <div class="container">
-        <div class="section-heading">
-          <p class="eyebrow">Education</p>
-          <h2>Academic background</h2>
-        </div>
-
-        <div class="project-list">
-          <article class="project">
-            <h3>M.S. in Cyberspace Security</h3>
-            <p>
-              <strong>Beihang University</strong> (Beijing University of
-              Aeronautics and Astronautics), Beijing, China
-            </p>
-            <div class="tag-list">
-              <span class="tag">2024–2027</span>
-              <span class="tag">Master's Student</span>
-            </div>
-          </article>
-
-          <article class="project">
-            <h3>B.S. in Computer and Information Science</h3>
-            <p><strong>Southwest University</strong>, Chongqing, China</p>
-            <div class="tag-list">
-              <span class="tag">2020–2024</span>
-              <span class="tag">Undergraduate Study</span>
-            </div>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <section id="research">
-      <div class="container">
-        <div class="section-heading">
-          <p class="eyebrow">Research Interests</p>
-          <h2>Core areas</h2>
-          <p>
-            My research connects robot learning with deployable autonomous
-            systems across ground and aerial platforms.
-          </p>
-        </div>
-
-        <div class="card-grid">
-          <article class="card">
-            <span class="card-number">01</span>
-            <h3>Embodied Intelligence</h3>
-            <p>
-              Integrated perception, reasoning, decision-making, and control for
-              robots interacting with dynamic physical environments.
-            </p>
-          </article>
-
-          <article class="card">
-            <span class="card-number">02</span>
-            <h3>Reinforcement Learning for Robotics</h3>
-            <p>
-              Policy learning, robust control, and adaptation for locomotion,
-              manipulation, and whole-body robotic behaviors.
-            </p>
-          </article>
-
-          <article class="card">
-            <span class="card-number">03</span>
-            <h3>Legged Loco-Manipulation</h3>
-            <p>
-              Whole-body coordination of quadruped robots and manipulators for
-              stable, accurate, and task-oriented physical interaction.
-            </p>
-          </article>
-
-          <article class="card">
-            <span class="card-number">04</span>
-            <h3>Autonomous Aerial Systems</h3>
-            <p>
-              UAV perception, navigation, trajectory planning, cooperative
-              networking, and reliable operation in real environments.
-            </p>
-          </article>
-
-          <article class="card">
-            <span class="card-number">05</span>
-            <h3>Robot Perception and Navigation</h3>
-            <p>
-              LiDAR, vision, state estimation, mapping, and planning for
-              autonomous operation in complex and unstructured spaces.
-            </p>
-          </article>
-
-          <article class="card">
-            <span class="card-number">06</span>
-            <h3>Sim-to-Real Transfer</h3>
-            <p>
-              Bridging simulation and hardware through robust learning,
-              system identification, adaptation, and deployment-aware control.
-            </p>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <section id="projects">
-      <div class="container">
-        <div class="section-heading">
-          <p class="eyebrow">Selected Projects</p>
-          <h2>Current research directions</h2>
-        </div>
-
-        <div class="project-list">
-          <article class="project">
-            <h3>Quadruped Loco-Manipulation</h3>
-            <p>
-              Learning and control for a quadruped robot equipped with a
-              manipulator, targeting stable whole-body motion and accurate
-              end-effector interaction.
-            </p>
-            <div class="tag-list">
-              <span class="tag">Quadruped Robots</span>
-              <span class="tag">Whole-Body Control</span>
-              <span class="tag">Reinforcement Learning</span>
-              <span class="tag">Sim-to-Real</span>
-            </div>
-          </article>
-
-          <article class="project">
-            <h3>Autonomous and Cooperative UAV Systems</h3>
-            <p>
-              Perception, navigation, networking, and cooperative autonomy for
-              unmanned aerial vehicles operating over real communication links.
-            </p>
-            <div class="tag-list">
-              <span class="tag">UAV</span>
-              <span class="tag">Autonomous Navigation</span>
-              <span class="tag">Multi-Robot Systems</span>
-              <span class="tag">Cooperative Networking</span>
-            </div>
-          </article>
-
-          <article class="project">
-            <h3>Embodied Robot Learning</h3>
-            <p>
-              Learning-based robotic systems that integrate perception and
-              control to perform robust tasks in unstructured environments.
-            </p>
-            <div class="tag-list">
-              <span class="tag">Embodied AI</span>
-              <span class="tag">Robot Learning</span>
-              <span class="tag">Perception</span>
-              <span class="tag">Manipulation</span>
-            </div>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <section id="publications">
-      <div class="container">
-        <div class="section-heading">
-          <p class="eyebrow">Publications</p>
-          <h2>Publications and manuscripts</h2>
-          <p>
-            Publication details will be added after formal acceptance or public
-            release.
-          </p>
-        </div>
-
-        <div class="publication-list">
-          <article class="publication publication-placeholder">
-            <h3>Research manuscripts in progress</h3>
-            <p>
-              Current work covers networked swarm systems, quadruped-arm
-              control, and autonomous aerial trajectory planning.
-            </p>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <section id="contact">
-      <div class="container">
-        <div class="contact-box">
-          <div>
-            <p class="eyebrow">Contact</p>
-            <h2>Research and collaboration</h2>
-            <p>
-              For academic discussions or potential collaboration, please get
-              in touch by email.
-            </p>
+        <div class="section-top">
+          <p class="section-index">04 / Education</p>
+          <div class="section-copy">
+            <h2>Academic background.</h2>
+            <p>Training in computing, security, and autonomous intelligent systems.</p>
           </div>
+        </div>
 
+        <div class="education-grid">
+          <article class="education-card">
+            <p class="date">2024 — 2027</p>
+            <h3>M.S. in Cyberspace Security</h3>
+            <p>Beihang University, Beijing, China</p>
+          </article>
+          <article class="education-card">
+            <p class="date">2020 — 2024</p>
+            <h3>B.S. in Computer and Information Science</h3>
+            <p>Southwest University, Chongqing, China</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="contact-section" id="contact">
+      <div class="container">
+        <div class="contact-panel">
+          <div>
+            <p class="kicker">Contact</p>
+            <h2>Let’s discuss robotics.</h2>
+            <p>For research conversations and potential collaboration, feel free to get in touch.</p>
+          </div>
           <div class="contact-links">
-            <a href="mailto:libozhaovo@buaa.edu.cn">libozhaovo@buaa.edu.cn</a>
-            <a href="https://github.com/wee733">github.com/wee733</a>
+            <a href="mailto:libozhaovo@buaa.edu.cn">Email</a>
+            <a href="https://github.com/wee733" target="_blank" rel="noreferrer">GitHub</a>
           </div>
         </div>
       </div>
@@ -765,7 +1271,7 @@
 
   <footer>
     <div class="container">
-      © <span id="year"></span> Bozhao Li. Last updated July 2026.
+      © <span id="year"></span> Bozhao Li · <a href="https://github.com/wee733/wee733.github.io" target="_blank" rel="noreferrer">Site source</a> · Updated July 2026
     </div>
   </footer>
 
