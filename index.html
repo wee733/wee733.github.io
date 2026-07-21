@@ -559,8 +559,11 @@
       background: #0a1018;
     }
 
-    .paper-media video.method-video {
-      object-fit: contain;
+    .paper-media img {
+      display: block;
+      width: 100%;
+      border: 1px solid var(--line);
+      border-radius: 6px;
       background: #eef2f7;
     }
 
@@ -573,6 +576,28 @@
     .paper-media figcaption a {
       color: var(--blue);
       font-weight: 700;
+    }
+
+    .paper-abstract {
+      margin-top: 12px;
+    }
+
+    .paper-abstract summary {
+      width: fit-content;
+      cursor: pointer;
+      color: var(--blue);
+      font-size: 12px;
+      font-weight: 750;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+
+    .paper-abstract p {
+      max-width: 720px;
+      margin: 9px 0 0;
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.6;
     }
 
     .education-grid {
@@ -1063,8 +1088,8 @@
           <div class="section-copy">
             <h2>Research manuscripts.</h2>
             <p>
-              Titles are listed for research overview only. Abstracts and public links will
-              be added after the manuscripts are ready for public release.
+              Titles are listed for research overview. Abstracts and public links are added
+              as they become available for release.
             </p>
           </div>
         </div>
@@ -1073,12 +1098,18 @@
           <article class="paper">
             <div class="paper-copy">
               <h3>Odometry-Guided Command-Space Drift Correction for a Frozen RL Quadruped-Arm Policy</h3>
+              <details class="paper-abstract">
+                <summary>Abstract</summary>
+                <p>
+                  Mounted manipulators can shift the center of mass of a quadruped and turn a zero lateral-velocity command into meter-scale corridor drift. This paper investigates this failure mode on a Unitree B2 carrying an ARX R5a arm, and further proposes a command-space correction layer that adopts FAST-LIVO2 pose estimates to adjust only the shared velocity command of a frozen, already-trained reinforcement-learning policy. The correction is policy-agnostic, i.e., the policy layer and low-level joint control remain unchanged. On real hardware, the corrector reduces the right-extreme drift from 5.18 m to 0.15 m over a 25 m corridor, a 97% reduction to the decimeter level, without retraining or an explicit CoM model.
+                </p>
+              </details>
             </div>
             <figure class="paper-media">
-              <video class="method-video" controls playsinline preload="metadata" poster="media/paper1.png" aria-label="Quadruped-arm policy demonstration">
-                <source src="media/web/b2arx-paper-demo.mp4" type="video/mp4">
-              </video>
-              <figcaption>Demo · <a href="media/paper1.png" target="_blank" rel="noreferrer">Method overview</a></figcaption>
+              <a href="media/paper1.png" target="_blank" rel="noreferrer" aria-label="Open the full-resolution method overview">
+                <img src="media/paper1.png" alt="Method overview for odometry-guided command-space drift correction" loading="lazy" width="1636" height="772">
+              </a>
+              <figcaption>Method overview</figcaption>
             </figure>
           </article>
           <article class="paper">
@@ -1100,6 +1131,12 @@
           <article class="paper">
             <div class="paper-copy">
               <h3>IRA: Interception-Risk-Aware Trajectory Planning for MAV Evasion from Multiple Pursuers in Cluttered Environments</h3>
+              <details class="paper-abstract">
+                <summary>Abstract</summary>
+                <p>
+                  This letter investigates trajectory planning for an autonomous micro air vehicle (MAV) evading multiple pursuers in cluttered environments. The evader MAV aims to reach a goal region while avoiding both obstacles and capture by pursuers. Unlike existing approaches that rely on predicting pursuers' future trajectories, the proposed planner explicitly incorporates interception-risk assessment into path planning and trajectory optimization, requiring only the pursuers' current positions and maximum speeds. This design is inspired by geometric methods for solving reach-avoid games, and it enables safe navigation without forecasting pursuer motions. To address situations where the goal region becomes unreachable due to complete coverage by interception-risk cells, a nearest safely reachable point (NSRP) is also introduced to terminate path search early and improve computational efficiency. The proposed approach is evaluated through five groups of simulations with different speed settings. Each group contains 100 instances with randomly generated initial positions. Compared with a baseline planner that neglects interception risk, the proposed planner significantly improves the success rate for the evader MAV to reach the goal region without being intercepted across all simulations. Real-world experiments with four MAVs further validate the proposed approach.
+                </p>
+              </details>
             </div>
             <figure class="paper-media">
               <video controls playsinline preload="metadata" poster="media/web/ral-paper-demo.jpg" aria-label="MAV evasion trajectory planning demonstration">
