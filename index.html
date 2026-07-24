@@ -694,30 +694,107 @@
       line-height: 1.6;
     }
 
-    .education-grid {
-      display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 16px;
+    .resume-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 20px;
     }
 
-    .education-card {
-      padding: 24px;
-      border: 1px solid var(--line);
-      border-radius: var(--radius);
+    .resume-link {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 42px;
+      padding: 0 16px;
+      border: 1px solid var(--ink);
+      border-radius: 6px;
+      color: #ffffff;
+      background: var(--ink);
+      font-size: 13px;
+      font-weight: 750;
+      transition: color 160ms ease, background 160ms ease, border-color 160ms ease;
+    }
+
+    .resume-link::after {
+      margin-left: 9px;
+      content: "↗";
+    }
+
+    .resume-link.secondary {
+      color: var(--ink);
+      border-color: var(--line);
       background: var(--surface);
     }
 
-    .education-card .date {
-      margin-bottom: 10px;
+    .resume-link:hover,
+    .resume-link:focus-visible {
+      color: #ffffff;
+      border-color: var(--blue);
+      background: var(--blue);
+      outline: none;
+    }
+
+    .experience-list {
+      border-top: 1px solid var(--line);
+    }
+
+    .experience-item {
+      display: grid;
+      grid-template-columns: 148px minmax(0, 1fr);
+      gap: 28px;
+      padding: 28px 0;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .experience-date {
+      margin: 4px 0 0;
       color: var(--blue);
       font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
       font-size: 12px;
       font-weight: 750;
+      letter-spacing: 0.02em;
     }
 
-    .education-card p {
+    .experience-heading {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 22px;
+      margin-bottom: 11px;
+    }
+
+    .experience-item h3 {
       margin-bottom: 0;
+      font-size: clamp(18px, 2vw, 21px);
+      letter-spacing: -0.025em;
+      text-transform: none;
+    }
+
+    .experience-role {
+      flex: 0 0 auto;
+      margin: 0;
+      padding: 5px 9px;
+      border: 1px solid #cddced;
+      border-radius: 999px;
+      color: var(--blue);
+      background: #edf4fb;
+      font-size: 11px;
+      font-weight: 750;
+      line-height: 1.35;
+      text-align: right;
+    }
+
+    .experience-summary {
+      max-width: 820px;
+      margin: 0;
       color: var(--muted);
+    }
+
+    .experience-summary.zh {
+      margin-top: 7px;
+      color: #718096;
+      font-size: 14px;
     }
 
     .contact-section {
@@ -863,8 +940,18 @@
         padding: 26px;
       }
 
-      .education-grid {
+      .experience-item {
         grid-template-columns: 1fr;
+        gap: 10px;
+      }
+
+      .experience-heading {
+        flex-direction: column;
+        gap: 9px;
+      }
+
+      .experience-role {
+        text-align: left;
       }
 
       .contact-panel {
@@ -898,6 +985,14 @@
 
       .paper h3 {
         font-size: 16px;
+      }
+
+      .resume-links {
+        flex-direction: column;
+      }
+
+      .resume-link {
+        width: 100%;
       }
     }
 
@@ -943,7 +1038,7 @@
       <ul class="nav-links">
         <li><a href="#projects">Projects</a></li>
         <li><a href="#papers">Papers</a></li>
-        <li><a href="#education">Education</a></li>
+        <li><a href="#experience">Experience</a></li>
         <li><a href="#contact">Contact</a></li>
       </ul>
     </nav>
@@ -1220,26 +1315,79 @@
       </div>
     </section>
 
-    <section id="education">
+    <section id="experience">
       <div class="container">
         <div class="section-top">
-          <p class="section-index">03 / Education</p>
+          <p class="section-index">03 / Experience</p>
           <div class="section-copy">
-            <h2>Academic background.</h2>
-            <p>Training in computing, security, and autonomous intelligent systems.</p>
+            <h2>Engineering experience behind the systems.</h2>
+            <p>Selected roles across whole-body control, Isaac ROS infrastructure, humanoid Sim2Real, and autonomous aerial systems.</p>
+            <div class="resume-links" aria-label="View résumés">
+              <a class="resume-link" href="output/pdf/bozhao-li-resume-zh.pdf" target="_blank" rel="noreferrer">中文简历</a>
+              <a class="resume-link secondary" href="output/pdf/bozhao-li-resume-en.pdf" target="_blank" rel="noreferrer">English Resume</a>
+            </div>
           </div>
         </div>
 
-        <div class="education-grid">
-          <article class="education-card">
-            <p class="date">2024 — 2027</p>
-            <h3>M.S. in Cyberspace Security</h3>
-            <p>Beihang University, Beijing, China</p>
+        <div class="experience-list">
+          <article class="experience-item">
+            <p class="experience-date">2025.11 — Present</p>
+            <div>
+              <div class="experience-heading">
+                <h3>National Key R&amp;D Program · B2 Quadruped-Manipulator Inspection Robot</h3>
+                <p class="experience-role">Perception &amp; Control Lead</p>
+              </div>
+              <p class="experience-summary">Led the complete Sim2Real delivery of an 18-DoF whole-body RL controller, including actuator identification, a shared ONNX deployment contract, a 50 Hz policy / 1 kHz control runtime, and Nav2 integration.</p>
+              <p class="experience-summary zh" lang="zh-CN">主导 B2 + R5A 腿臂一体强化学习控制从训练到真机的完整闭环，并通过里程计命令外环在不重训练的条件下，将 25 m 直线横漂由 5.18 m 降至 0.15 m。</p>
+            </div>
           </article>
-          <article class="education-card">
-            <p class="date">2020 — 2024</p>
-            <h3>B.S. in Computer and Information Science</h3>
-            <p>Southwest University, Chongqing, China</p>
+
+          <article class="experience-item">
+            <p class="experience-date">2026.06 — Present</p>
+            <div>
+              <div class="experience-heading">
+                <h3>Tsinghua Qiyuan Lab · Robot-Dog Swarm Control &amp; Digital Twin</h3>
+                <p class="experience-role">Isaac ROS Infrastructure Lead</p>
+              </div>
+              <p class="experience-summary">Own the B2 + R5A low-level control, GPU perception, and ROS 2 interfaces on Isaac Sim 5.1, Isaac ROS 4.5, and Jetson AGX Thor, supporting segmentation, VLN, and VLA research.</p>
+              <p class="experience-summary zh" lang="zh-CN">负责 Isaac ROS 基础设施与数字孪生，完成 ARX R5A 的 ros2_control 适配、cuMotion 与行为树任务编排，并打通仿真和真机共用接口。</p>
+            </div>
+          </article>
+
+          <article class="experience-item">
+            <p class="experience-date">2026.05 — 2026.07</p>
+            <div>
+              <div class="experience-heading">
+                <h3>DongYi Tech · Phybot C2 Humanoid Soccer &amp; Sim2Real</h3>
+                <p class="experience-role">RL &amp; Sim2Real Engineer</p>
+              </div>
+              <p class="experience-summary">Delivered a shared Isaac Lab-MuJoCo-hardware deployment path for walking, penalty kick, soccer kick, and drop kick on a 21-DoF humanoid.</p>
+              <p class="experience-summary zh" lang="zh-CN">负责四类足球技能的 Sim2Real 落地，逐项对齐关节顺序、观测历史、动作尺度、PD 参数和 IMU 语义，并完成 500 Hz 电机控制 / 50 Hz 策略推理的真机验证。</p>
+            </div>
+          </article>
+
+          <article class="experience-item">
+            <p class="experience-date">2025.03 — 2026.04</p>
+            <div>
+              <div class="experience-heading">
+                <h3>China Aerospace 9th Academy · 30-UAV Swarm</h3>
+                <p class="experience-role">Swarm Planning &amp; Onboard Software</p>
+              </div>
+              <p class="experience-summary">Built onboard planning and communications for a 30-UAV swarm, led the ROS 1-to-ROS 2 migration, and validated public-5G swarm control in field tests.</p>
+              <p class="experience-summary zh" lang="zh-CN">负责 Jetson 机载计算、三维多机规划与通信链路，使用 Zenoh 解决跨网段发现与带宽问题，并建设机器人应用的一键分发与部署平台。</p>
+            </div>
+          </article>
+
+          <article class="experience-item">
+            <p class="experience-date">2024.11 — 2025.10</p>
+            <div>
+              <div class="experience-heading">
+                <h3>Beijing Zhuoyi Tech · Hangfeng Autonomous UAV</h3>
+                <p class="experience-role">Deputy Chief Designer</p>
+              </div>
+              <p class="experience-summary">Integrated FAST-LIO2, EGO-Planner, and RACER while coordinating timing, frames, calibration, and state-machine interfaces from prototype integration through flight testing.</p>
+              <p class="experience-summary zh" lang="zh-CN">参与自主无人机总体设计与样机试飞，负责自主导航栈落地、整机接口协调及飞行日志回归分析，支撑外场试飞和多机编队验证。</p>
+            </div>
           </article>
         </div>
       </div>
