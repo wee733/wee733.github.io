@@ -427,6 +427,78 @@
       object-fit: contain;
     }
 
+    .media-carousel {
+      position: relative;
+      display: grid;
+    }
+
+    .carousel-track,
+    .carousel-slide {
+      display: grid;
+      min-width: 0;
+      height: 100%;
+    }
+
+    .carousel-slide {
+      grid-area: 1 / 1;
+    }
+
+    .carousel-slide[hidden] {
+      display: none;
+    }
+
+    .carousel-button {
+      position: absolute;
+      top: 50%;
+      z-index: 2;
+      width: 42px;
+      height: 42px;
+      padding: 0;
+      border: 1px solid rgba(255, 255, 255, 0.5);
+      border-radius: 50%;
+      color: #ffffff;
+      background: rgba(8, 13, 20, 0.72);
+      box-shadow: 0 6px 18px rgba(0, 0, 0, 0.24);
+      font: inherit;
+      font-size: 28px;
+      line-height: 1;
+      cursor: pointer;
+      transform: translateY(-50%);
+      transition: background 160ms ease, border-color 160ms ease, transform 160ms ease;
+    }
+
+    .carousel-button:hover,
+    .carousel-button:focus-visible {
+      border-color: #ffffff;
+      background: rgba(40, 95, 157, 0.94);
+      outline: none;
+      transform: translateY(-50%) scale(1.05);
+    }
+
+    .carousel-button.prev {
+      left: 14px;
+    }
+
+    .carousel-button.next {
+      right: 14px;
+    }
+
+    .carousel-status {
+      position: absolute;
+      right: 14px;
+      bottom: 14px;
+      z-index: 2;
+      margin: 0;
+      padding: 5px 10px;
+      border-radius: 999px;
+      color: #ffffff;
+      background: rgba(8, 13, 20, 0.76);
+      font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+    }
+
     .project-body {
       flex: 1;
       display: flex;
@@ -926,10 +998,22 @@
 
         <div class="project-grid">
           <article class="project-card featured">
-            <div class="project-visual">
-              <video controls playsinline preload="metadata" poster="media/web/nav2-demo.jpg" aria-label="B2ARX Nav2 demo">
-                <source src="media/web/nav2-demo.mp4" type="video/mp4">
-              </video>
+            <div class="project-visual media-carousel" data-media-carousel tabindex="0" aria-label="B2ARX Isaac Sim project videos">
+              <div class="carousel-track">
+                <div class="carousel-slide" data-carousel-slide>
+                  <video controls playsinline preload="metadata" poster="media/project-covers/arx-r5-isaac-sim.png" aria-label="Isaac Sim autonomous navigation demo">
+                    <source src="media/web/isaac-sim-nav.mp4" type="video/mp4">
+                  </video>
+                </div>
+                <div class="carousel-slide" data-carousel-slide hidden>
+                  <video controls playsinline preload="metadata" poster="media/web/nav2-demo.jpg" aria-label="B2ARX Nav2 demo">
+                    <source src="media/web/nav2-demo.mp4" type="video/mp4">
+                  </video>
+                </div>
+              </div>
+              <button class="carousel-button prev" type="button" data-carousel-prev aria-label="Show previous project video">&#8249;</button>
+              <button class="carousel-button next" type="button" data-carousel-next aria-label="Show next project video">&#8250;</button>
+              <p class="carousel-status" data-carousel-status aria-live="polite">1 / 2</p>
             </div>
             <div class="project-body">
               <div class="project-meta">
@@ -1186,6 +1270,42 @@
 
   <script>
     document.getElementById("year").textContent = new Date().getFullYear();
+
+    document.querySelectorAll("[data-media-carousel]").forEach((carousel) => {
+      const slides = Array.from(carousel.querySelectorAll("[data-carousel-slide]"));
+      const previousButton = carousel.querySelector("[data-carousel-prev]");
+      const nextButton = carousel.querySelector("[data-carousel-next]");
+      const status = carousel.querySelector("[data-carousel-status]");
+      let currentIndex = 0;
+
+      const showSlide = (nextIndex) => {
+        slides[currentIndex].querySelector("video")?.pause();
+        currentIndex = (nextIndex + slides.length) % slides.length;
+
+        slides.forEach((slide, index) => {
+          slide.hidden = index !== currentIndex;
+        });
+
+        status.textContent = `${currentIndex + 1} / ${slides.length}`;
+      };
+
+      previousButton.addEventListener("click", () => showSlide(currentIndex - 1));
+      nextButton.addEventListener("click", () => showSlide(currentIndex + 1));
+
+      carousel.addEventListener("keydown", (event) => {
+        if (event.target.closest("video")) return;
+
+        if (event.key === "ArrowLeft") {
+          event.preventDefault();
+          showSlide(currentIndex - 1);
+        }
+
+        if (event.key === "ArrowRight") {
+          event.preventDefault();
+          showSlide(currentIndex + 1);
+        }
+      });
+    });
   </script>
 </body>
 </html>
