@@ -672,6 +672,27 @@
       font-weight: 700;
     }
 
+    .paper-carousel {
+      overflow: hidden;
+      border-radius: 6px;
+      background: #0a1018;
+    }
+
+    .paper-carousel .carousel-track,
+    .paper-carousel .carousel-slide {
+      height: auto;
+    }
+
+    .paper-carousel .carousel-slide > a {
+      display: block;
+    }
+
+    .paper-carousel img,
+    .paper-carousel video {
+      aspect-ratio: 16 / 9;
+      object-fit: cover;
+    }
+
     .paper-abstract {
       margin-top: 12px;
     }
@@ -1137,6 +1158,11 @@
           </article>
 
           <article class="project-card">
+            <div class="project-visual">
+              <video controls playsinline preload="metadata" poster="media/web/manipulation-demo.jpg" aria-label="ARX R5A Isaac ROS manipulation demo">
+                <source src="media/web/manipulation-demo.mp4" type="video/mp4">
+              </video>
+            </div>
             <div class="project-body">
               <div class="project-meta">
                 <span>Python · ROS 2</span>
@@ -1289,10 +1315,35 @@
               <figcaption>Experimental demonstration</figcaption>
             </figure>
           </article>
-          <article class="paper no-media">
+          <article class="paper">
             <div class="paper-copy">
               <h3>FormationDiffuser: Boundary-Consistent Diffusion for Long-Horizon 3D Multi-UAV Reconfiguration</h3>
             </div>
+            <figure class="paper-media">
+              <div class="media-carousel paper-carousel" data-media-carousel tabindex="0" aria-label="FormationDiffuser paper media">
+                <div class="carousel-track">
+                  <div class="carousel-slide" data-carousel-slide>
+                    <video controls playsinline preload="metadata" poster="media/web/formation-diffuser-demo.jpg" aria-label="FormationDiffuser real-world multi-UAV reconfiguration demonstration">
+                      <source src="media/web/formation-diffuser-demo.mp4" type="video/mp4">
+                    </video>
+                  </div>
+                  <div class="carousel-slide" data-carousel-slide hidden>
+                    <a href="media/aaai_1.png" target="_blank" rel="noreferrer" aria-label="Open the first full-resolution FormationDiffuser trajectory image">
+                      <img src="media/web/formation-diffuser-1.jpg" alt="FormationDiffuser trajectories through a long-horizon obstacle course" loading="lazy" width="1600" height="900">
+                    </a>
+                  </div>
+                  <div class="carousel-slide" data-carousel-slide hidden>
+                    <a href="media/aaai_2.png" target="_blank" rel="noreferrer" aria-label="Open the second full-resolution FormationDiffuser trajectory image">
+                      <img src="media/web/formation-diffuser-2.jpg" alt="FormationDiffuser multi-UAV trajectories around stacked obstacles" loading="lazy" width="1600" height="900">
+                    </a>
+                  </div>
+                </div>
+                <button class="carousel-button prev" type="button" data-carousel-prev aria-label="Show previous FormationDiffuser media">&#8249;</button>
+                <button class="carousel-button next" type="button" data-carousel-next aria-label="Show next FormationDiffuser media">&#8250;</button>
+                <p class="carousel-status" data-carousel-status aria-live="polite">1 / 3</p>
+              </div>
+              <figcaption>Real-world demonstration and trajectory visualizations</figcaption>
+            </figure>
           </article>
           <article class="paper">
             <div class="paper-copy">
