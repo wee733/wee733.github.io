@@ -694,12 +694,12 @@
     }
 
     .paper-abstract {
+      --abstract-limit: 146px;
       margin-top: 12px;
     }
 
-    .paper-abstract summary {
-      width: fit-content;
-      cursor: pointer;
+    .abstract-label {
+      margin: 0 0 7px;
       color: var(--blue);
       font-size: 12px;
       font-weight: 750;
@@ -707,12 +707,60 @@
       text-transform: uppercase;
     }
 
-    .paper-abstract p {
+    .paper-abstract-content {
+      position: relative;
       max-width: 720px;
-      margin: 9px 0 0;
+    }
+
+    .paper-abstract-content p {
+      margin: 0;
       color: var(--muted);
       font-size: 13px;
       line-height: 1.6;
+    }
+
+    .paper-abstract.is-collapsible:not(.is-expanded) .paper-abstract-content {
+      max-height: var(--abstract-limit);
+      overflow: hidden;
+    }
+
+    .paper-abstract.is-collapsible:not(.is-expanded) .paper-abstract-content::after {
+      position: absolute;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      height: 42px;
+      content: "";
+      pointer-events: none;
+      background: linear-gradient(to bottom, rgba(255, 255, 255, 0), #ffffff 88%);
+    }
+
+    .abstract-toggle {
+      margin-top: 8px;
+      padding: 0;
+      border: 0;
+      color: var(--blue);
+      background: transparent;
+      font: inherit;
+      font-size: 12px;
+      font-weight: 750;
+      cursor: pointer;
+    }
+
+    .abstract-toggle::after {
+      margin-left: 6px;
+      content: "↓";
+    }
+
+    .paper-abstract.is-expanded .abstract-toggle::after {
+      content: "↑";
+    }
+
+    .abstract-toggle:hover,
+    .abstract-toggle:focus-visible {
+      text-decoration: underline;
+      text-underline-offset: 3px;
+      outline: none;
     }
 
     .resume-links {
@@ -1290,12 +1338,15 @@
           <article class="paper">
             <div class="paper-copy">
               <h3>Odometry-Guided Command-Space Drift Correction for a Frozen RL Quadruped-Arm Policy</h3>
-              <details class="paper-abstract">
-                <summary>Abstract</summary>
-                <p>
-                  Mounted manipulators can shift the center of mass of a quadruped and turn a zero lateral-velocity command into meter-scale corridor drift. This paper investigates this failure mode on a Unitree B2 carrying an ARX R5a arm, and further proposes a command-space correction layer that adopts FAST-LIVO2 pose estimates to adjust only the shared velocity command of a frozen, already-trained reinforcement-learning policy. The correction is policy-agnostic, i.e., the policy layer and low-level joint control remain unchanged. On real hardware, the corrector reduces the right-extreme drift from 5.18 m to 0.15 m over a 25 m corridor, a 97% reduction to the decimeter level, without retraining or an explicit CoM model.
-                </p>
-              </details>
+              <div class="paper-abstract" data-collapsible-abstract>
+                <p class="abstract-label">Abstract</p>
+                <div class="paper-abstract-content" id="abstract-drift-correction" data-abstract-content>
+                  <p>
+                    Mounted manipulators can shift the center of mass of a quadruped and turn a zero lateral-velocity command into meter-scale corridor drift. This paper investigates this failure mode on a Unitree B2 carrying an ARX R5a arm, and further proposes a command-space correction layer that adopts FAST-LIVO2 pose estimates to adjust only the shared velocity command of a frozen, already-trained reinforcement-learning policy. The correction is policy-agnostic, i.e., the policy layer and low-level joint control remain unchanged. On real hardware, the corrector reduces the right-extreme drift from 5.18 m to 0.15 m over a 25 m corridor, a 97% reduction to the decimeter level, without retraining or an explicit CoM model.
+                  </p>
+                </div>
+                <button class="abstract-toggle" type="button" data-abstract-toggle aria-expanded="false" aria-controls="abstract-drift-correction" hidden>Show full abstract</button>
+              </div>
             </div>
             <figure class="paper-media">
               <a href="media/paper1.png" target="_blank" rel="noreferrer" aria-label="Open the full-resolution method overview">
@@ -1348,12 +1399,15 @@
           <article class="paper">
             <div class="paper-copy">
               <h3>IRA: Interception-Risk-Aware Trajectory Planning for MAV Evasion from Multiple Pursuers in Cluttered Environments</h3>
-              <details class="paper-abstract">
-                <summary>Abstract</summary>
-                <p>
-                  This letter investigates trajectory planning for an autonomous micro air vehicle (MAV) evading multiple pursuers in cluttered environments. The evader MAV aims to reach a goal region while avoiding both obstacles and capture by pursuers. Unlike existing approaches that rely on predicting pursuers' future trajectories, the proposed planner explicitly incorporates interception-risk assessment into path planning and trajectory optimization, requiring only the pursuers' current positions and maximum speeds. This design is inspired by geometric methods for solving reach-avoid games, and it enables safe navigation without forecasting pursuer motions. To address situations where the goal region becomes unreachable due to complete coverage by interception-risk cells, a nearest safely reachable point (NSRP) is also introduced to terminate path search early and improve computational efficiency. The proposed approach is evaluated through five groups of simulations with different speed settings. Each group contains 100 instances with randomly generated initial positions. Compared with a baseline planner that neglects interception risk, the proposed planner significantly improves the success rate for the evader MAV to reach the goal region without being intercepted across all simulations. Real-world experiments with four MAVs further validate the proposed approach.
-                </p>
-              </details>
+              <div class="paper-abstract" data-collapsible-abstract>
+                <p class="abstract-label">Abstract</p>
+                <div class="paper-abstract-content" id="abstract-ira" data-abstract-content>
+                  <p>
+                    This letter investigates trajectory planning for an autonomous micro air vehicle (MAV) evading multiple pursuers in cluttered environments. The evader MAV aims to reach a goal region while avoiding both obstacles and capture by pursuers. Unlike existing approaches that rely on predicting pursuers' future trajectories, the proposed planner explicitly incorporates interception-risk assessment into path planning and trajectory optimization, requiring only the pursuers' current positions and maximum speeds. This design is inspired by geometric methods for solving reach-avoid games, and it enables safe navigation without forecasting pursuer motions. To address situations where the goal region becomes unreachable due to complete coverage by interception-risk cells, a nearest safely reachable point (NSRP) is also introduced to terminate path search early and improve computational efficiency. The proposed approach is evaluated through five groups of simulations with different speed settings. Each group contains 100 instances with randomly generated initial positions. Compared with a baseline planner that neglects interception risk, the proposed planner significantly improves the success rate for the evader MAV to reach the goal region without being intercepted across all simulations. Real-world experiments with four MAVs further validate the proposed approach.
+                  </p>
+                </div>
+                <button class="abstract-toggle" type="button" data-abstract-toggle aria-expanded="false" aria-controls="abstract-ira" hidden>Show full abstract</button>
+              </div>
             </div>
             <figure class="paper-media">
               <video controls playsinline preload="metadata" poster="media/web/ral-paper-demo.jpg" aria-label="MAV evasion trajectory planning demonstration">
@@ -1505,6 +1559,45 @@
         }
       });
     });
+
+    const abstracts = Array.from(document.querySelectorAll("[data-collapsible-abstract]"));
+
+    const measureAbstracts = () => {
+      abstracts.forEach((abstract) => {
+        const content = abstract.querySelector("[data-abstract-content]");
+        const toggle = abstract.querySelector("[data-abstract-toggle]");
+        const limit = Number.parseFloat(getComputedStyle(abstract).getPropertyValue("--abstract-limit"));
+        const exceedsLimit = content.scrollHeight > limit + 1;
+
+        abstract.classList.toggle("is-collapsible", exceedsLimit);
+        toggle.hidden = !exceedsLimit;
+
+        if (!exceedsLimit) {
+          abstract.classList.remove("is-expanded");
+          toggle.setAttribute("aria-expanded", "false");
+          toggle.textContent = "Show full abstract";
+        }
+      });
+    };
+
+    abstracts.forEach((abstract) => {
+      const toggle = abstract.querySelector("[data-abstract-toggle]");
+
+      toggle.addEventListener("click", () => {
+        const expanded = abstract.classList.toggle("is-expanded");
+        toggle.setAttribute("aria-expanded", String(expanded));
+        toggle.textContent = expanded ? "Collapse abstract" : "Show full abstract";
+      });
+    });
+
+    let abstractResizeFrame;
+    window.addEventListener("resize", () => {
+      window.cancelAnimationFrame(abstractResizeFrame);
+      abstractResizeFrame = window.requestAnimationFrame(measureAbstracts);
+    });
+
+    measureAbstracts();
+    window.addEventListener("load", measureAbstracts, { once: true });
   </script>
 </body>
 </html>
