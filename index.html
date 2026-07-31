@@ -763,47 +763,6 @@
       outline: none;
     }
 
-    .resume-links {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-      margin-top: 20px;
-    }
-
-    .resume-link {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      min-height: 42px;
-      padding: 0 16px;
-      border: 1px solid var(--ink);
-      border-radius: 6px;
-      color: #ffffff;
-      background: var(--ink);
-      font-size: 13px;
-      font-weight: 750;
-      transition: color 160ms ease, background 160ms ease, border-color 160ms ease;
-    }
-
-    .resume-link::after {
-      margin-left: 9px;
-      content: "↗";
-    }
-
-    .resume-link.secondary {
-      color: var(--ink);
-      border-color: var(--line);
-      background: var(--surface);
-    }
-
-    .resume-link:hover,
-    .resume-link:focus-visible {
-      color: #ffffff;
-      border-color: var(--blue);
-      background: var(--blue);
-      outline: none;
-    }
-
     .experience-list {
       border-top: 1px solid var(--line);
     }
@@ -1056,13 +1015,6 @@
         font-size: 16px;
       }
 
-      .resume-links {
-        flex-direction: column;
-      }
-
-      .resume-link {
-        width: 100%;
-      }
     }
 
     @media (prefers-reduced-motion: reduce) {
@@ -1207,8 +1159,8 @@
 
           <article class="project-card">
             <div class="project-visual">
-              <video controls playsinline preload="metadata" poster="media/web/manipulation-demo.jpg" aria-label="ARX R5A Isaac ROS manipulation demo">
-                <source src="media/web/manipulation-demo.mp4" type="video/mp4">
+              <video controls playsinline preload="metadata" poster="media/web/manipulation-short.jpg" aria-label="ARX R5A Isaac ROS manipulation demo">
+                <source src="media/web/manipulation-short.mp4" type="video/mp4">
               </video>
             </div>
             <div class="project-body">
@@ -1427,10 +1379,6 @@
           <div class="section-copy">
             <h2>Engineering experience behind the systems.</h2>
             <p>Selected roles across whole-body control, Isaac ROS infrastructure, humanoid Sim2Real, and autonomous aerial systems.</p>
-            <div class="resume-links" aria-label="View résumés">
-              <a class="resume-link" href="output/pdf/bozhao-li-resume-zh.pdf" target="_blank" rel="noreferrer">中文简历</a>
-              <a class="resume-link secondary" href="output/pdf/bozhao-li-resume-en.pdf" target="_blank" rel="noreferrer">English Resume</a>
-            </div>
           </div>
         </div>
 
