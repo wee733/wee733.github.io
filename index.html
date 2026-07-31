@@ -258,6 +258,7 @@
     }
 
     .intro-copy {
+      min-width: 0;
       max-width: 810px;
     }
 
@@ -427,6 +428,133 @@
       object-fit: contain;
     }
 
+    .project-card:not(.featured):not(.project-spotlight) .project-visual {
+      aspect-ratio: 16 / 9;
+      min-height: 0;
+    }
+
+    .project-spotlight {
+      grid-column: span 12;
+      border-color: #3a516f;
+      background: linear-gradient(145deg, #121d2d 0%, #101a29 100%);
+      box-shadow: 0 24px 60px rgba(0, 0, 0, 0.2);
+    }
+
+    .project-spotlight .project-visual {
+      min-height: 0;
+      aspect-ratio: 16 / 9;
+      border-bottom: 1px solid #2c3b51;
+    }
+
+    .project-spotlight .project-body {
+      padding: 34px;
+    }
+
+    .spotlight-intro {
+      display: grid;
+      grid-template-columns: minmax(0, 1.25fr) minmax(300px, 0.75fr);
+      gap: 36px;
+      align-items: start;
+    }
+
+    .project-spotlight h3 {
+      max-width: 760px;
+      margin-bottom: 15px;
+      font-size: clamp(28px, 3.8vw, 42px);
+    }
+
+    .project-spotlight .project-en {
+      max-width: 760px;
+      font-size: 16px;
+      line-height: 1.68;
+    }
+
+    .project-spotlight .project-zh {
+      max-width: 760px;
+      font-size: 15px;
+      line-height: 1.68;
+    }
+
+    .project-metrics {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 10px;
+      margin: 0;
+    }
+
+    .project-metric {
+      min-height: 96px;
+      padding: 15px;
+      border: 1px solid #30415a;
+      border-radius: 7px;
+      background: rgba(8, 13, 20, 0.34);
+    }
+
+    .project-metric dt {
+      margin-bottom: 5px;
+      color: #ffffff;
+      font-size: 22px;
+      font-weight: 800;
+      line-height: 1.1;
+      letter-spacing: -0.035em;
+    }
+
+    .project-metric dd {
+      margin: 0;
+      color: #8fa3bc;
+      font-size: 11px;
+      font-weight: 700;
+      line-height: 1.45;
+      text-transform: uppercase;
+    }
+
+    .system-highlights {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 12px;
+      margin-top: 24px;
+    }
+
+    .system-highlight {
+      padding: 18px;
+      border: 1px solid #293a52;
+      border-radius: 7px;
+      background: #0e1827;
+    }
+
+    .system-highlight h4 {
+      margin: 0 0 7px;
+      color: #dce8f5;
+      font-size: 14px;
+      letter-spacing: -0.01em;
+    }
+
+    .system-highlight p {
+      margin: 0;
+      color: #91a4bc;
+      font-size: 13px;
+      line-height: 1.58;
+    }
+
+    .project-access {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin: 20px 0 0;
+      padding-top: 17px;
+      border-top: 1px solid #293a52;
+      color: #879bb4;
+      font-size: 12px;
+    }
+
+    .project-access strong {
+      flex: 0 0 auto;
+      color: var(--green);
+      font-size: 11px;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+
     .media-carousel {
       position: relative;
       display: grid;
@@ -497,6 +625,22 @@
       font-size: 12px;
       font-weight: 700;
       letter-spacing: 0.04em;
+    }
+
+    .carousel-caption {
+      position: absolute;
+      bottom: 14px;
+      left: 14px;
+      z-index: 2;
+      max-width: calc(100% - 100px);
+      padding: 6px 10px;
+      border-radius: 4px;
+      color: #ffffff;
+      background: rgba(8, 13, 20, 0.78);
+      font-size: 12px;
+      font-weight: 700;
+      line-height: 1.35;
+      pointer-events: none;
     }
 
     .project-body {
@@ -922,6 +1066,11 @@
         order: initial;
       }
 
+      .spotlight-intro {
+        grid-template-columns: 1fr;
+        gap: 24px;
+      }
+
     }
 
     @media (max-width: 700px) {
@@ -968,6 +1117,14 @@
         padding: 26px;
       }
 
+      .project-spotlight .project-body {
+        padding: 28px;
+      }
+
+      .system-highlights {
+        grid-template-columns: 1fr;
+      }
+
       .experience-item {
         grid-template-columns: 1fr;
         gap: 10px;
@@ -996,15 +1153,52 @@
       }
     }
 
+    @media (max-width: 620px) {
+      .hero-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+      }
+
+      .portrait-card {
+        width: 132px;
+      }
+
+      .intro-copy p {
+        overflow-wrap: anywhere;
+      }
+
+      .project-metrics {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
     @media (max-width: 480px) {
+      .nav-links li:nth-child(4) {
+        display: none;
+      }
+
       h1 {
         margin-bottom: 20px;
         font-size: 36px;
       }
 
-      .hero-grid {
+      .project-spotlight .project-body,
+      .featured .project-body,
+      .project-body {
+        padding: 22px;
+      }
+
+      .project-metrics {
         grid-template-columns: 1fr;
-        gap: 18px;
+      }
+
+      .project-metric {
+        min-height: 0;
+      }
+
+      .carousel-caption {
+        max-width: calc(100% - 76px);
+        font-size: 10px;
       }
 
       .paper {
@@ -1106,54 +1300,104 @@
           <div class="section-copy">
             <h2>Robotic systems built as complete pipelines.</h2>
             <p>
-              Each project is linked to its repository, with concise descriptions based on
-              the current implementation and README.
+              Selected systems spanning whole-body control, Sim2Real deployment, GPU motion
+              planning, and robot autonomy. Public repositories are linked where available.
             </p>
           </div>
         </div>
 
         <div class="project-grid">
-          <article class="project-card featured">
-            <div class="project-visual media-carousel" data-media-carousel tabindex="0" aria-label="B2ARX Isaac Sim project videos">
+          <article class="project-card project-spotlight">
+            <div class="project-visual media-carousel" data-media-carousel tabindex="0" aria-label="B2 and ARX R5A system demonstrations">
               <div class="carousel-track">
                 <div class="carousel-slide" data-carousel-slide>
-                  <video controls playsinline preload="metadata" poster="media/web/isaac-sim-nav.jpg" aria-label="Isaac Sim autonomous navigation demo">
-                    <source src="media/web/isaac-sim-nav.mp4" type="video/mp4">
+                  <video controls playsinline preload="metadata" poster="media/web/b2arx-sim2real.jpg" aria-label="B2 and ARX R5A whole-body controller in Isaac Lab, MuJoCo, and on real hardware">
+                    <source src="media/web/b2arx-sim2real.mp4" type="video/mp4">
                   </video>
+                  <span class="carousel-caption">Whole-body Sim2Real · Isaac Lab → MuJoCo → Hardware</span>
                 </div>
                 <div class="carousel-slide" data-carousel-slide hidden>
-                  <video controls playsinline preload="metadata" poster="media/web/nav2-demo.jpg" aria-label="B2ARX Nav2 demo">
+                  <video controls playsinline preload="metadata" poster="media/web/isaac-sim-nav.jpg" aria-label="Isaac Sim autonomous navigation and perception demo">
+                    <source src="media/web/isaac-sim-nav.mp4" type="video/mp4">
+                  </video>
+                  <span class="carousel-caption">Digital twin · ZED X perception, Nvblox mapping, and Nav2</span>
+                </div>
+                <div class="carousel-slide" data-carousel-slide hidden>
+                  <video controls playsinline preload="metadata" poster="media/web/nav2-demo.jpg" aria-label="B2 and ARX R5A navigation integration demo">
                     <source src="media/web/nav2-demo.mp4" type="video/mp4">
                   </video>
+                  <span class="carousel-caption">Autonomy interface · Shared navigation and control contract</span>
                 </div>
               </div>
-              <button class="carousel-button prev" type="button" data-carousel-prev aria-label="Show previous project video">&#8249;</button>
-              <button class="carousel-button next" type="button" data-carousel-next aria-label="Show next project video">&#8250;</button>
-              <p class="carousel-status" data-carousel-status aria-live="polite">1 / 2</p>
+              <button class="carousel-button prev" type="button" data-carousel-prev aria-label="Show previous B2 project video">&#8249;</button>
+              <button class="carousel-button next" type="button" data-carousel-next aria-label="Show next B2 project video">&#8250;</button>
+              <p class="carousel-status" data-carousel-status aria-live="polite">1 / 3</p>
             </div>
             <div class="project-body">
               <div class="project-meta">
-                <span>Python · Isaac Sim</span>
-                <span class="status">Active</span>
+                <span>Unitree B2 · ARX R5A · 18-DoF</span>
+                <span class="status">Research system</span>
               </div>
-              <h3>B2Arx_Isaac_Sim</h3>
-              <p class="project-en">
-                A reproducible Isaac Sim workspace for a B2 quadruped with an ARX R5 arm.
-                It integrates the official ZED X simulation stream, Isaac ROS Nvblox,
-                Nav2, and a replaceable reinforcement-learning locomotion policy into a
-                verified perception-to-joint-control pipeline.
-              </p>
-              <p class="project-zh" lang="zh-CN">
-                面向 B2 四足机器人与 ARX R5 机械臂的一体化 Isaac Sim 工作区。项目将官方 ZED X 仿真流、Isaac ROS Nvblox、Nav2 与可替换的强化学习运动策略连接起来，完成从感知、建图、导航指令到关节控制的端到端验证。
-              </p>
+              <div class="spotlight-intro">
+                <div>
+                  <h3>B2 + ARX R5A Whole-Body Control &amp; Autonomy</h3>
+                  <p class="project-en">
+                    Led the end-to-end Sim2Real delivery of an 18-DoF quadruped-manipulator
+                    controller and its autonomy interface—from PPO task and actuator modeling
+                    to real-time C++ deployment, navigation integration, and drift correction.
+                  </p>
+                  <p class="project-zh" lang="zh-CN">
+                    主导 B2 四足 + ARX R5A 机械臂 18 自由度腿臂一体控制从 Isaac Lab 训练、MuJoCo 回归到真机部署的完整闭环，并向上打通感知、建图与 Nav2 导航接口。工作不仅覆盖策略训练，也解决执行器建模、双频实时控制、训练—部署契约和横向漂移校正等落地问题。
+                  </p>
+                </div>
+                <dl class="project-metrics" aria-label="B2 project highlights">
+                  <div class="project-metric">
+                    <dt>18-DoF</dt>
+                    <dd>12 leg + 6 arm whole-body policy</dd>
+                  </div>
+                  <div class="project-metric">
+                    <dt>3 stages</dt>
+                    <dd>Isaac Lab · MuJoCo · Hardware</dd>
+                  </div>
+                  <div class="project-metric">
+                    <dt>50 / 1000 Hz</dt>
+                    <dd>Policy inference / DDS-CAN control</dd>
+                  </div>
+                  <div class="project-metric">
+                    <dt>97%</dt>
+                    <dd>Lateral drift reduction over 25 m</dd>
+                  </div>
+                </dl>
+              </div>
+
+              <div class="system-highlights">
+                <article class="system-highlight">
+                  <h4>Task &amp; policy design</h4>
+                  <p>Because the hardware has no end-effector force sensor, reframed the original force-position task as coordinated base-velocity and end-effector-position tracking, then removed a crouching reward shortcut with reachability-guided body-pose supervision.</p>
+                </article>
+                <article class="system-highlight">
+                  <h4>Sim2Real fidelity</h4>
+                  <p>Identified per-joint PD behavior and CAN / arm-response latency, modeled their rate-equivalent dynamics in training, and randomized friction, center of mass, and payload.</p>
+                </article>
+                <article class="system-highlight">
+                  <h4>Deployment contract</h4>
+                  <p>Kept one policy package and safety FSM across Isaac Lab, MuJoCo, and hardware; dual-rate logs exposed joint-order, gait-phase, and zero-fallback mismatches.</p>
+                </article>
+                <article class="system-highlight">
+                  <h4>Autonomy &amp; drift correction</h4>
+                  <p>Connected the controller to the Isaac ROS / Nvblox / Nav2 stack and added a FAST-LIVO2 command-space PI loop, reducing 25 m lateral drift from 5.18 m to 0.15 m without retraining.</p>
+                </article>
+              </div>
               <div class="tag-list">
-                <span class="tag">Quadruped</span>
-                <span class="tag">Loco-Manipulation</span>
+                <span class="tag">Isaac Lab</span>
+                <span class="tag">PPO</span>
+                <span class="tag">MuJoCo</span>
+                <span class="tag">ROS 2</span>
                 <span class="tag">Nvblox</span>
                 <span class="tag">Nav2</span>
-                <span class="tag">RL Policy</span>
+                <span class="tag">C++ Runtime</span>
               </div>
-              <a class="repo-link" href="https://github.com/wee733/B2Arx_Isaac_Sim" target="_blank" rel="noreferrer">View repository</a>
+              <p class="project-access"><strong>Private project</strong><span>Code is not publicly released; the architecture, engineering scope, and measured validation are summarized here.</span></p>
             </div>
           </article>
 
@@ -1465,7 +1709,7 @@
 
   <footer>
     <div class="container">
-      © <span id="year"></span> Bozhao Li · <a href="https://github.com/wee733/wee733.github.io" target="_blank" rel="noreferrer">Site source</a> · Updated July 2026
+      © <span id="year"></span> Bozhao Li · <a href="https://github.com/wee733/wee733.github.io" target="_blank" rel="noreferrer">Site source</a> · Updated August 2026
     </div>
   </footer>
 
