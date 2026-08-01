@@ -402,6 +402,7 @@
     }
 
     .project-visual {
+      position: relative;
       min-height: 210px;
       overflow: hidden;
       background: #17243a;
@@ -1308,30 +1309,11 @@
 
         <div class="project-grid">
           <article class="project-card project-spotlight">
-            <div class="project-visual media-carousel" data-media-carousel tabindex="0" aria-label="B2 and ARX R5A system demonstrations">
-              <div class="carousel-track">
-                <div class="carousel-slide" data-carousel-slide>
-                  <video controls playsinline preload="metadata" poster="media/web/b2arx-sim2real.jpg" aria-label="B2 and ARX R5A whole-body controller in Isaac Lab, MuJoCo, and on real hardware">
-                    <source src="media/web/b2arx-sim2real.mp4" type="video/mp4">
-                  </video>
-                  <span class="carousel-caption">Whole-body Sim2Real · Isaac Lab → MuJoCo → Hardware</span>
-                </div>
-                <div class="carousel-slide" data-carousel-slide hidden>
-                  <video controls playsinline preload="metadata" poster="media/web/isaac-sim-nav.jpg" aria-label="Isaac Sim autonomous navigation and perception demo">
-                    <source src="media/web/isaac-sim-nav.mp4" type="video/mp4">
-                  </video>
-                  <span class="carousel-caption">Digital twin · ZED X perception, Nvblox mapping, and Nav2</span>
-                </div>
-                <div class="carousel-slide" data-carousel-slide hidden>
-                  <video controls playsinline preload="metadata" poster="media/web/nav2-demo.jpg" aria-label="B2 and ARX R5A navigation integration demo">
-                    <source src="media/web/nav2-demo.mp4" type="video/mp4">
-                  </video>
-                  <span class="carousel-caption">Autonomy interface · Shared navigation and control contract</span>
-                </div>
-              </div>
-              <button class="carousel-button prev" type="button" data-carousel-prev aria-label="Show previous B2 project video">&#8249;</button>
-              <button class="carousel-button next" type="button" data-carousel-next aria-label="Show next B2 project video">&#8250;</button>
-              <p class="carousel-status" data-carousel-status aria-live="polite">1 / 3</p>
+            <div class="project-visual">
+              <video controls playsinline preload="metadata" poster="media/web/b2arx-sim2real.jpg" aria-label="B2 and ARX R5A whole-body controller in Isaac Lab, MuJoCo, and on real hardware">
+                <source src="media/web/b2arx-sim2real.mp4" type="video/mp4">
+              </video>
+              <span class="carousel-caption">Whole-body Sim2Real · Isaac Lab → MuJoCo → Hardware</span>
             </div>
             <div class="project-body">
               <div class="project-meta">
@@ -1340,14 +1322,14 @@
               </div>
               <div class="spotlight-intro">
                 <div>
-                  <h3>B2 + ARX R5A Whole-Body Control &amp; Autonomy</h3>
+                  <h3>B2 + ARX R5A Whole-Body Sim2Real</h3>
                   <p class="project-en">
                     Led the end-to-end Sim2Real delivery of an 18-DoF quadruped-manipulator
-                    controller and its autonomy interface—from PPO task and actuator modeling
-                    to real-time C++ deployment, navigation integration, and drift correction.
+                    controller—from PPO task and actuator modeling to a shared deployment
+                    contract, real-time C++ execution, hardware diagnosis, and drift correction.
                   </p>
                   <p class="project-zh" lang="zh-CN">
-                    主导 B2 四足 + ARX R5A 机械臂 18 自由度腿臂一体控制从 Isaac Lab 训练、MuJoCo 回归到真机部署的完整闭环，并向上打通感知、建图与 Nav2 导航接口。工作不仅覆盖策略训练，也解决执行器建模、双频实时控制、训练—部署契约和横向漂移校正等落地问题。
+                    主导 B2 四足 + ARX R5A 机械臂 18 自由度腿臂一体控制从 Isaac Lab 训练、MuJoCo 回归到真机部署的完整闭环，重点解决任务与奖励设计、执行器建模、双频实时控制、训练—部署契约和横向漂移校正等 Sim2Real 落地问题。
                   </p>
                 </div>
                 <dl class="project-metrics" aria-label="B2 project highlights">
@@ -1384,20 +1366,66 @@
                   <p>Kept one policy package and safety FSM across Isaac Lab, MuJoCo, and hardware; dual-rate logs exposed joint-order, gait-phase, and zero-fallback mismatches.</p>
                 </article>
                 <article class="system-highlight">
-                  <h4>Autonomy &amp; drift correction</h4>
-                  <p>Connected the controller to the Isaac ROS / Nvblox / Nav2 stack and added a FAST-LIVO2 command-space PI loop, reducing 25 m lateral drift from 5.18 m to 0.15 m without retraining.</p>
+                  <h4>Command-space drift correction</h4>
+                  <p>Added a FAST-LIVO2 command-space PI loop upstream of the untouched policy, reducing 25 m lateral drift from 5.18 m to 0.15 m without retraining.</p>
                 </article>
               </div>
               <div class="tag-list">
                 <span class="tag">Isaac Lab</span>
                 <span class="tag">PPO</span>
                 <span class="tag">MuJoCo</span>
-                <span class="tag">ROS 2</span>
-                <span class="tag">Nvblox</span>
-                <span class="tag">Nav2</span>
+                <span class="tag">Sim2Real</span>
+                <span class="tag">FAST-LIVO2</span>
                 <span class="tag">C++ Runtime</span>
               </div>
               <p class="project-access"><strong>Private project</strong><span>Code is not publicly released; the architecture, engineering scope, and measured validation are summarized here.</span></p>
+            </div>
+          </article>
+
+          <article class="project-card featured">
+            <div class="project-visual media-carousel" data-media-carousel tabindex="0" aria-label="B2 and ARX R5A Isaac Sim navigation demonstrations">
+              <div class="carousel-track">
+                <div class="carousel-slide" data-carousel-slide>
+                  <video controls playsinline preload="metadata" poster="media/web/isaac-sim-nav.jpg" aria-label="Isaac Sim high-fidelity autonomous navigation and perception demo">
+                    <source src="media/web/isaac-sim-nav.mp4" type="video/mp4">
+                  </video>
+                  <span class="carousel-caption">High-fidelity navigation · Reconstructed inspection environment</span>
+                </div>
+                <div class="carousel-slide" data-carousel-slide hidden>
+                  <video controls playsinline preload="metadata" poster="media/web/nav2-demo.jpg" aria-label="B2 and ARX R5A Nav2 integration demo in Isaac Sim">
+                    <source src="media/web/nav2-demo.mp4" type="video/mp4">
+                  </video>
+                  <span class="carousel-caption">Digital twin · Perception, mapping, planning, and navigation</span>
+                </div>
+              </div>
+              <button class="carousel-button prev" type="button" data-carousel-prev aria-label="Show previous Isaac Sim navigation video">&#8249;</button>
+              <button class="carousel-button next" type="button" data-carousel-next aria-label="Show next Isaac Sim navigation video">&#8250;</button>
+              <p class="carousel-status" data-carousel-status aria-live="polite">1 / 2</p>
+            </div>
+            <div class="project-body">
+              <div class="project-meta">
+                <span>Python · Isaac Sim 5.1 · ROS 2</span>
+                <span class="status">Digital twin</span>
+              </div>
+              <h3>B2Arx Isaac Sim Digital Twin &amp; Navigation</h3>
+              <p class="project-en">
+                A separate high-fidelity digital-twin and navigation workspace for the B2
+                quadruped with an ARX R5A arm. It uses real inspection-scene maps reconstructed
+                with ImMesh and 3D Gaussian Splatting, then connects simulated ZED X / XT32
+                sensing, Nvblox, Nav2, and the robot control interface for end-to-end perception,
+                mapping, route planning, and navigation validation.
+              </p>
+              <p class="project-zh" lang="zh-CN">
+                独立的 B2 + ARX R5A Isaac Sim 数字孪生与自主导航项目。使用 ImMesh 与 3D Gaussian Splatting（三维高斯泼溅）重建的真实巡检场景地图构建高保真仿真环境，并连接 ZED X / XT32 仿真传感、Nvblox、Nav2 与机器人控制接口，用于感知、建图、路径规划和导航链路的端到端验证。
+              </p>
+              <div class="tag-list">
+                <span class="tag">ImMesh</span>
+                <span class="tag">3D Gaussian Splatting</span>
+                <span class="tag">Isaac Sim 5.1</span>
+                <span class="tag">Nvblox</span>
+                <span class="tag">Nav2</span>
+              </div>
+              <p class="project-access"><strong>Private project</strong><span>The digital-twin and navigation workflow is documented here; source code is not publicly released.</span></p>
             </div>
           </article>
 
@@ -1634,8 +1662,8 @@
                 <h3>National Key R&amp;D Program · B2 Quadruped-Manipulator Inspection Robot</h3>
                 <p class="experience-role">Perception &amp; Control Lead</p>
               </div>
-              <p class="experience-summary">Led the complete Sim2Real delivery of an 18-DoF whole-body RL controller, including actuator identification, a shared ONNX deployment contract, a 50 Hz policy / 1 kHz control runtime, and Nav2 integration.</p>
-              <p class="experience-summary zh" lang="zh-CN">主导 B2 + R5A 腿臂一体强化学习控制从训练到真机的完整闭环，并通过里程计命令外环在不重训练的条件下，将 25 m 直线横漂由 5.18 m 降至 0.15 m。</p>
+              <p class="experience-summary">Led the complete Sim2Real delivery of an 18-DoF whole-body RL controller, including actuator identification, a shared ONNX deployment contract, and a 50 Hz policy / 1 kHz control runtime.</p>
+              <p class="experience-summary zh" lang="zh-CN">主导 B2 + R5A 腿臂一体强化学习控制从训练到真机的完整闭环</p>
             </div>
           </article>
 
@@ -1655,7 +1683,7 @@
             <p class="experience-date">2026.05 — 2026.07</p>
             <div>
               <div class="experience-heading">
-                <h3>DongYi Tech · Phybot C2 Humanoid Soccer &amp; Sim2Real</h3>
+                <h3>Phybot C2 Humanoid Soccer &amp; Sim2Real</h3>
                 <p class="experience-role">RL &amp; Sim2Real Engineer</p>
               </div>
               <p class="experience-summary">Delivered a shared Isaac Lab-MuJoCo-hardware deployment path for walking, penalty kick, soccer kick, and drop kick on a 21-DoF humanoid.</p>
