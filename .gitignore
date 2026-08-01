@@ -1,0 +1,11 @@
+.DS_Store
+**/.DS_Store
+.vscode/
+
+# Resumes stay local and are not published by the site.
+libozhao_resume_*.pdf
+
+# Keep web-ready assets in the repository; archive source media elsewhere.
+media/*
+!media/web/
+!media/web/**

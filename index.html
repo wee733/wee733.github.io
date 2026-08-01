@@ -429,112 +429,9 @@
       object-fit: contain;
     }
 
-    .project-card:not(.featured):not(.project-spotlight) .project-visual {
+    .project-card:not(.featured) .project-visual {
       aspect-ratio: 16 / 9;
       min-height: 0;
-    }
-
-    .project-spotlight {
-      grid-column: span 12;
-      border-color: #3a516f;
-      background: linear-gradient(145deg, #121d2d 0%, #101a29 100%);
-      box-shadow: 0 24px 60px rgba(0, 0, 0, 0.2);
-    }
-
-    .project-spotlight .project-visual {
-      min-height: 0;
-      aspect-ratio: 16 / 9;
-      border-bottom: 1px solid #2c3b51;
-    }
-
-    .project-spotlight .project-body {
-      padding: 34px;
-    }
-
-    .spotlight-intro {
-      display: grid;
-      grid-template-columns: minmax(0, 1.25fr) minmax(300px, 0.75fr);
-      gap: 36px;
-      align-items: start;
-    }
-
-    .project-spotlight h3 {
-      max-width: 760px;
-      margin-bottom: 15px;
-      font-size: clamp(28px, 3.8vw, 42px);
-    }
-
-    .project-spotlight .project-en {
-      max-width: 760px;
-      font-size: 16px;
-      line-height: 1.68;
-    }
-
-    .project-spotlight .project-zh {
-      max-width: 760px;
-      font-size: 15px;
-      line-height: 1.68;
-    }
-
-    .project-metrics {
-      display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 10px;
-      margin: 0;
-    }
-
-    .project-metric {
-      min-height: 96px;
-      padding: 15px;
-      border: 1px solid #30415a;
-      border-radius: 7px;
-      background: rgba(8, 13, 20, 0.34);
-    }
-
-    .project-metric dt {
-      margin-bottom: 5px;
-      color: #ffffff;
-      font-size: 22px;
-      font-weight: 800;
-      line-height: 1.1;
-      letter-spacing: -0.035em;
-    }
-
-    .project-metric dd {
-      margin: 0;
-      color: #8fa3bc;
-      font-size: 11px;
-      font-weight: 700;
-      line-height: 1.45;
-      text-transform: uppercase;
-    }
-
-    .system-highlights {
-      display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 12px;
-      margin-top: 24px;
-    }
-
-    .system-highlight {
-      padding: 18px;
-      border: 1px solid #293a52;
-      border-radius: 7px;
-      background: #0e1827;
-    }
-
-    .system-highlight h4 {
-      margin: 0 0 7px;
-      color: #dce8f5;
-      font-size: 14px;
-      letter-spacing: -0.01em;
-    }
-
-    .system-highlight p {
-      margin: 0;
-      color: #91a4bc;
-      font-size: 13px;
-      line-height: 1.58;
     }
 
     .project-access {
@@ -1067,11 +964,6 @@
         order: initial;
       }
 
-      .spotlight-intro {
-        grid-template-columns: 1fr;
-        gap: 24px;
-      }
-
     }
 
     @media (max-width: 700px) {
@@ -1118,14 +1010,6 @@
         padding: 26px;
       }
 
-      .project-spotlight .project-body {
-        padding: 28px;
-      }
-
-      .system-highlights {
-        grid-template-columns: 1fr;
-      }
-
       .experience-item {
         grid-template-columns: 1fr;
         gap: 10px;
@@ -1168,9 +1052,6 @@
         overflow-wrap: anywhere;
       }
 
-      .project-metrics {
-        grid-template-columns: 1fr 1fr;
-      }
     }
 
     @media (max-width: 480px) {
@@ -1183,18 +1064,9 @@
         font-size: 36px;
       }
 
-      .project-spotlight .project-body,
       .featured .project-body,
       .project-body {
         padding: 22px;
-      }
-
-      .project-metrics {
-        grid-template-columns: 1fr;
-      }
-
-      .project-metric {
-        min-height: 0;
       }
 
       .carousel-caption {
@@ -1266,7 +1138,7 @@
         <h1>Bozhao Li</h1>
         <div class="hero-grid">
           <figure class="portrait-card">
-            <img src="media/myself.jpg" alt="Portrait of Bozhao Li" width="1001" height="1230">
+            <img src="media/web/portrait.jpg" alt="Portrait of Bozhao Li" width="1001" height="1230">
           </figure>
 
           <div class="intro-copy">
@@ -1308,81 +1180,44 @@
         </div>
 
         <div class="project-grid">
-          <article class="project-card project-spotlight">
+          <article class="project-card">
             <div class="project-visual">
               <video controls playsinline preload="metadata" poster="media/web/b2arx-sim2real.jpg" aria-label="B2 and ARX R5A whole-body controller in Isaac Lab, MuJoCo, and on real hardware">
                 <source src="media/web/b2arx-sim2real.mp4" type="video/mp4">
               </video>
-              <span class="carousel-caption">Whole-body Sim2Real · Isaac Lab → MuJoCo → Hardware</span>
+              <span class="carousel-caption">Whole-body policy · Isaac Lab → MuJoCo → Hardware</span>
             </div>
             <div class="project-body">
               <div class="project-meta">
-                <span>Unitree B2 · ARX R5A · 18-DoF</span>
-                <span class="status">Research system</span>
+                <span>Isaac Lab · PPO · 18-DoF</span>
+                <span class="status">Training &amp; deployment</span>
               </div>
-              <div class="spotlight-intro">
-                <div>
-                  <h3>B2 + ARX R5A Whole-Body Sim2Real</h3>
-                  <p class="project-en">
-                    Led the end-to-end Sim2Real delivery of an 18-DoF quadruped-manipulator
-                    controller—from PPO task and actuator modeling to a shared deployment
-                    contract, real-time C++ execution, hardware diagnosis, and drift correction.
-                  </p>
-                  <p class="project-zh" lang="zh-CN">
-                    主导 B2 四足 + ARX R5A 机械臂 18 自由度腿臂一体控制从 Isaac Lab 训练、MuJoCo 回归到真机部署的完整闭环，重点解决任务与奖励设计、执行器建模、双频实时控制、训练—部署契约和横向漂移校正等 Sim2Real 落地问题。
-                  </p>
-                </div>
-                <dl class="project-metrics" aria-label="B2 project highlights">
-                  <div class="project-metric">
-                    <dt>18-DoF</dt>
-                    <dd>12 leg + 6 arm whole-body policy</dd>
-                  </div>
-                  <div class="project-metric">
-                    <dt>3 stages</dt>
-                    <dd>Isaac Lab · MuJoCo · Hardware</dd>
-                  </div>
-                  <div class="project-metric">
-                    <dt>50 / 1000 Hz</dt>
-                    <dd>Policy inference / DDS-CAN control</dd>
-                  </div>
-                  <div class="project-metric">
-                    <dt>97%</dt>
-                    <dd>Lateral drift reduction over 25 m</dd>
-                  </div>
-                </dl>
-              </div>
-
-              <div class="system-highlights">
-                <article class="system-highlight">
-                  <h4>Task &amp; policy design</h4>
-                  <p>Because the hardware has no end-effector force sensor, reframed the original force-position task as coordinated base-velocity and end-effector-position tracking, then removed a crouching reward shortcut with reachability-guided body-pose supervision.</p>
-                </article>
-                <article class="system-highlight">
-                  <h4>Sim2Real fidelity</h4>
-                  <p>Identified per-joint PD behavior and CAN / arm-response latency, modeled their rate-equivalent dynamics in training, and randomized friction, center of mass, and payload.</p>
-                </article>
-                <article class="system-highlight">
-                  <h4>Deployment contract</h4>
-                  <p>Kept one policy package and safety FSM across Isaac Lab, MuJoCo, and hardware; dual-rate logs exposed joint-order, gait-phase, and zero-fallback mismatches.</p>
-                </article>
-                <article class="system-highlight">
-                  <h4>Command-space drift correction</h4>
-                  <p>Added a FAST-LIVO2 command-space PI loop upstream of the untouched policy, reducing 25 m lateral drift from 5.18 m to 0.15 m without retraining.</p>
-                </article>
-              </div>
+              <h3>B2 + ARX R5A Whole-Body RL</h3>
+              <p class="project-en">
+                Built an Isaac Lab / PPO training system for the Unitree B2 + ARX R5A with
+                two complementary modes: decoupled multi-task training for locomotion and
+                manipulation, and a coupled 18-DoF whole-body controller covering 12 leg and
+                6 arm joints. The task design supports base locomotion, end-effector pose
+                tracking, training-side hybrid force-position control, and arm-leg coordination, with
+                observation history, privileged training signals, curriculum rewards, domain
+                randomization, MuJoCo regression, and hardware deployment.
+              </p>
+              <p class="project-zh" lang="zh-CN">
+                搭建面向 Unitree B2 + ARX R5A 的 Isaac Lab / PPO 训练系统，支持两种互补模式：面向运动与操作的 multi-task 解耦训练，以及覆盖 12 个腿部关节与 6 个机械臂关节的 18 自由度全身联合控制器。任务设计支持底盘运动、末端位姿跟踪、训练侧混合力位控制与腿臂协同，并结合历史观测、特权训练信息、奖励课程、域随机化、MuJoCo 回归和真机部署。
+              </p>
               <div class="tag-list">
                 <span class="tag">Isaac Lab</span>
                 <span class="tag">PPO</span>
+                <span class="tag">Multi-task</span>
+                <span class="tag">Hybrid Force-Position</span>
+                <span class="tag">18-DoF</span>
                 <span class="tag">MuJoCo</span>
-                <span class="tag">Sim2Real</span>
-                <span class="tag">FAST-LIVO2</span>
-                <span class="tag">C++ Runtime</span>
               </div>
-              <p class="project-access"><strong>Private project</strong><span>Code is not publicly released; the architecture, engineering scope, and measured validation are summarized here.</span></p>
+              <p class="project-access"><strong>Private project</strong><span>Training and validation scope summarized above. / 代码未公开，训练与验证范围如上。</span></p>
             </div>
           </article>
 
-          <article class="project-card featured">
+          <article class="project-card">
             <div class="project-visual media-carousel" data-media-carousel tabindex="0" aria-label="B2 and ARX R5A Isaac Sim navigation demonstrations">
               <div class="carousel-track">
                 <div class="carousel-slide" data-carousel-slide>
@@ -1409,14 +1244,14 @@
               </div>
               <h3>B2Arx Isaac Sim Digital Twin &amp; Navigation</h3>
               <p class="project-en">
-                A separate high-fidelity digital-twin and navigation workspace for the B2
-                quadruped with an ARX R5A arm. It uses real inspection-scene maps reconstructed
-                with ImMesh and 3D Gaussian Splatting, then connects simulated ZED X / XT32
-                sensing, Nvblox, Nav2, and the robot control interface for end-to-end perception,
-                mapping, route planning, and navigation validation.
+                Built a separate Isaac Sim digital-twin and navigation workspace for the B2
+                quadruped with an ARX R5A arm. Real inspection scenes reconstructed with ImMesh
+                and 3D Gaussian Splatting are imported as high-fidelity environments; simulated
+                ZED X / XT32 sensing, Nvblox, Nav2, and the robot control interface then validate
+                perception, mapping, route planning, and navigation end to end.
               </p>
               <p class="project-zh" lang="zh-CN">
-                独立的 B2 + ARX R5A Isaac Sim 数字孪生与自主导航项目。使用 ImMesh 与 3D Gaussian Splatting（三维高斯泼溅）重建的真实巡检场景地图构建高保真仿真环境，并连接 ZED X / XT32 仿真传感、Nvblox、Nav2 与机器人控制接口，用于感知、建图、路径规划和导航链路的端到端验证。
+                搭建独立的 B2 + ARX R5A Isaac Sim 数字孪生与自主导航工作区。将 ImMesh 与 3D Gaussian Splatting（三维高斯泼溅）重建的真实巡检场景导入为高保真环境，再连接 ZED X / XT32 仿真传感、Nvblox、Nav2 与机器人控制接口，对感知、建图、路径规划和导航链路进行端到端验证。
               </p>
               <div class="tag-list">
                 <span class="tag">ImMesh</span>
@@ -1425,7 +1260,7 @@
                 <span class="tag">Nvblox</span>
                 <span class="tag">Nav2</span>
               </div>
-              <p class="project-access"><strong>Private project</strong><span>The digital-twin and navigation workflow is documented here; source code is not publicly released.</span></p>
+              <p class="project-access"><strong>Private project</strong><span>Digital-twin and navigation workflow summarized above. / 代码未公开，数字孪生与导航流程如上。</span></p>
             </div>
           </article>
 
@@ -1472,12 +1307,13 @@
               </div>
               <h3>Isaac_Ros_CuMotion_ArxR5a</h3>
               <p class="project-en">
-                A community integration for controlling a physical ARX R5A through its
-                vendor CAN driver with ros2_control, MoveIt 2, RViz, and NVIDIA Isaac ROS
-                cuMotion. It provides the robot model, hardware adapter, and planning stack.
+                Built a community integration for controlling a physical ARX R5A while the
+                vendor CAN driver remains responsible for low-level communication. It connects
+                ros2_control, MoveIt 2, RViz, and NVIDIA Isaac ROS cuMotion, and provides the
+                robot model, hardware adapter, and GPU motion-planning stack.
               </p>
               <p class="project-zh" lang="zh-CN">
-                面向真实 ARX R5A 的社区集成项目：保留厂商 CAN 驱动负责底层通信，并提供机器人模型、ros2_control 硬件适配、MoveIt 2 配置及 Isaac ROS cuMotion GPU 规划链路。
+                搭建面向真实 ARX R5A 的社区集成方案，同时保留厂商 CAN 驱动负责底层通信。项目连接 ros2_control、MoveIt 2、RViz 与 NVIDIA Isaac ROS cuMotion，并提供机器人模型、硬件适配层和 GPU 运动规划栈。
               </p>
               <div class="tag-list">
                 <span class="tag">cuMotion</span>
@@ -1491,7 +1327,7 @@
 
           <article class="project-card featured">
             <div class="project-visual">
-              <img src="media/project-covers/arx-r5-isaac-sim.png" alt="ARX R5A cuMotion planning in RViz alongside execution in Isaac Sim" loading="lazy">
+              <img src="media/web/arx-r5-isaac-sim.png" alt="ARX R5A cuMotion planning in RViz alongside execution in Isaac Sim" loading="lazy">
             </div>
             <div class="project-body">
               <div class="project-meta">
@@ -1500,13 +1336,13 @@
               </div>
               <h3>arx-r5-isaac-sim</h3>
               <p class="project-en">
-                A standalone ARX R5A simulation that closes the loop from GPU motion
-                planning through MoveIt and ros2_control to PhysX execution and ROS 2 state
-                feedback. Arm and gripper actions, mimic joints, and status feedback are
-                validated end to end.
+                Built a standalone ARX R5A Isaac Sim project that closes the loop from cuMotion
+                GPU planning through MoveIt and ros2_control to PhysX execution and ROS 2 state
+                feedback. It validates arm and gripper actions, mimic joints, and execution
+                status end to end.
               </p>
               <p class="project-zh" lang="zh-CN">
-                独立的 ARX R5A Isaac Sim 仿真项目，打通 cuMotion GPU 规划、MoveIt、ros2_control、PhysX 执行与 ROS 2 状态回传闭环，并完成机械臂与夹爪 Action、mimic 关节和状态反馈的端到端验证。
+                搭建独立的 ARX R5A Isaac Sim 项目，打通从 cuMotion GPU 规划，经 MoveIt 与 ros2_control，到 PhysX 执行和 ROS 2 状态回传的闭环，并对机械臂与夹爪 Action、mimic 关节和执行状态进行端到端验证。
               </p>
               <div class="tag-list">
                 <span class="tag">Isaac Sim 5.1</span>
@@ -1573,8 +1409,8 @@
               </div>
             </div>
             <figure class="paper-media">
-              <a href="media/paper1.png" target="_blank" rel="noreferrer" aria-label="Open the full-resolution method overview">
-                <img src="media/paper1.png" alt="Method overview for odometry-guided command-space drift correction" loading="lazy" width="1636" height="772">
+              <a href="media/web/drift-correction-overview.png" target="_blank" rel="noreferrer" aria-label="Open the full-resolution method overview">
+                <img src="media/web/drift-correction-overview.png" alt="Method overview for odometry-guided command-space drift correction" loading="lazy" width="1636" height="772">
               </a>
               <figcaption>Method overview</figcaption>
             </figure>
@@ -1603,12 +1439,12 @@
                     </video>
                   </div>
                   <div class="carousel-slide" data-carousel-slide hidden>
-                    <a href="media/aaai_1.png" target="_blank" rel="noreferrer" aria-label="Open the first full-resolution FormationDiffuser trajectory image">
+                    <a href="media/web/formation-diffuser-1.png" target="_blank" rel="noreferrer" aria-label="Open the first full-resolution FormationDiffuser trajectory image">
                       <img src="media/web/formation-diffuser-1.jpg" alt="FormationDiffuser trajectories through a long-horizon obstacle course" loading="lazy" width="1600" height="900">
                     </a>
                   </div>
                   <div class="carousel-slide" data-carousel-slide hidden>
-                    <a href="media/aaai_2.png" target="_blank" rel="noreferrer" aria-label="Open the second full-resolution FormationDiffuser trajectory image">
+                    <a href="media/web/formation-diffuser-2.png" target="_blank" rel="noreferrer" aria-label="Open the second full-resolution FormationDiffuser trajectory image">
                       <img src="media/web/formation-diffuser-2.jpg" alt="FormationDiffuser multi-UAV trajectories around stacked obstacles" loading="lazy" width="1600" height="900">
                     </a>
                   </div>
@@ -1650,7 +1486,7 @@
           <p class="section-index">03 / Experience</p>
           <div class="section-copy">
             <h2>Engineering experience behind the systems.</h2>
-            <p>Selected roles across whole-body control, Isaac ROS infrastructure, humanoid Sim2Real, and autonomous aerial systems.</p>
+            <p>Selected roles across whole-body control, Isaac ROS infrastructure, and autonomous aerial systems.</p>
           </div>
         </div>
 
@@ -1662,8 +1498,8 @@
                 <h3>National Key R&amp;D Program · B2 Quadruped-Manipulator Inspection Robot</h3>
                 <p class="experience-role">Perception &amp; Control Lead</p>
               </div>
-              <p class="experience-summary">Led the complete Sim2Real delivery of an 18-DoF whole-body RL controller, including actuator identification, a shared ONNX deployment contract, and a 50 Hz policy / 1 kHz control runtime.</p>
-              <p class="experience-summary zh" lang="zh-CN">主导 B2 + R5A 腿臂一体强化学习控制从训练到真机的完整闭环</p>
+              <p class="experience-summary">Led B2 + R5A whole-body RL training and deployment, including the 18-DoF controller, actuator modeling, a shared ONNX deployment contract, and a 50 Hz policy / 1 kHz DDS-CAN runtime.</p>
+              <p class="experience-summary zh" lang="zh-CN">主导 B2 + R5A 腿臂一体强化学习训练与部署，包括 18 自由度全身控制器、执行器建模、统一 ONNX 部署契约，以及 50 Hz 策略推理 / 1 kHz DDS-CAN 实时运行时。</p>
             </div>
           </article>
 
@@ -1674,20 +1510,8 @@
                 <h3>Tsinghua Qiyuan Lab · Robot-Dog Swarm Control &amp; Digital Twin</h3>
                 <p class="experience-role">Isaac ROS Infrastructure Lead</p>
               </div>
-              <p class="experience-summary">Own the B2 + R5A low-level control, GPU perception, and ROS 2 interfaces on Isaac Sim 5.1, Isaac ROS 4.5, and Jetson AGX Thor, supporting segmentation, VLN, and VLA research.</p>
-              <p class="experience-summary zh" lang="zh-CN">负责 Isaac ROS 基础设施与数字孪生，完成 ARX R5A 的 ros2_control 适配、cuMotion 与行为树任务编排，并打通仿真和真机共用接口。</p>
-            </div>
-          </article>
-
-          <article class="experience-item">
-            <p class="experience-date">2026.05 — 2026.07</p>
-            <div>
-              <div class="experience-heading">
-                <h3>Phybot C2 Humanoid Soccer &amp; Sim2Real</h3>
-                <p class="experience-role">RL &amp; Sim2Real Engineer</p>
-              </div>
-              <p class="experience-summary">Delivered a shared Isaac Lab-MuJoCo-hardware deployment path for walking, penalty kick, soccer kick, and drop kick on a 21-DoF humanoid.</p>
-              <p class="experience-summary zh" lang="zh-CN">负责四类足球技能的 Sim2Real 落地，逐项对齐关节顺序、观测历史、动作尺度、PD 参数和 IMU 语义，并完成 500 Hz 电机控制 / 50 Hz 策略推理的真机验证。</p>
+              <p class="experience-summary">Built B2 + R5A Isaac ROS infrastructure on Isaac Sim 5.1, Isaac ROS 4.5, and Jetson AGX Thor, including the ARX R5A ros2_control adapter, cuMotion task pipeline, behavior-tree orchestration, and shared simulation / hardware interfaces for GPU perception, VLN, and VLA research.</p>
+              <p class="experience-summary zh" lang="zh-CN">在 Isaac Sim 5.1、Isaac ROS 4.5 与 Jetson AGX Thor 上建设 B2 + R5A 的 Isaac ROS 基础设施，包括 ARX R5A ros2_control 适配、cuMotion 任务管线、行为树编排，以及支撑 GPU 感知、VLN 与 VLA 研究的仿真 / 真机共用接口。</p>
             </div>
           </article>
 
@@ -1698,8 +1522,8 @@
                 <h3>China Aerospace 9th Academy · 30-UAV Swarm</h3>
                 <p class="experience-role">Swarm Planning &amp; Onboard Software</p>
               </div>
-              <p class="experience-summary">Built onboard planning and communications for a 30-UAV swarm, led the ROS 1-to-ROS 2 migration, and validated public-5G swarm control in field tests.</p>
-              <p class="experience-summary zh" lang="zh-CN">负责 Jetson 机载计算、三维多机规划与通信链路，使用 Zenoh 解决跨网段发现与带宽问题，并建设机器人应用的一键分发与部署平台。</p>
+              <p class="experience-summary">Owned Jetson onboard computing, 3D multi-UAV planning, and communications for a 30-UAV swarm; led the ROS 1-to-ROS 2 migration, introduced Zenoh for cross-subnet discovery and bandwidth control, built one-click robot-application deployment, and validated the system over public 5G in field tests.</p>
+              <p class="experience-summary zh" lang="zh-CN">负责 30 机集群的 Jetson 机载计算、三维多机规划与通信链路；主导 ROS 1 向 ROS 2 迁移，引入 Zenoh 解决跨网段发现与带宽控制问题，建设机器人应用一键部署能力，并通过公网 5G 完成外场验证。</p>
             </div>
           </article>
 
@@ -1707,11 +1531,11 @@
             <p class="experience-date">2024.11 — 2025.10</p>
             <div>
               <div class="experience-heading">
-                <h3>Beijing Zhuoyi Tech · Hangfeng Autonomous UAV</h3>
+                <h3>Hangfeng Autonomous UAV</h3>
                 <p class="experience-role">Deputy Chief Designer</p>
               </div>
-              <p class="experience-summary">Integrated FAST-LIO2, EGO-Planner, and RACER while coordinating timing, frames, calibration, and state-machine interfaces from prototype integration through flight testing.</p>
-              <p class="experience-summary zh" lang="zh-CN">参与自主无人机总体设计与样机试飞，负责自主导航栈落地、整机接口协调及飞行日志回归分析，支撑外场试飞和多机编队验证。</p>
+              <p class="experience-summary">Worked on autonomous-UAV system design and prototype flight testing; integrated FAST-LIO2, EGO-Planner, and RACER while aligning timing, frames, calibration, and state-machine interfaces, and used flight-log regression to support outdoor and multi-UAV validation.</p>
+              <p class="experience-summary zh" lang="zh-CN">参与自主无人机总体设计与样机试飞；集成 FAST-LIO2、EGO-Planner 与 RACER，统一时序、坐标系、标定和状态机接口，并通过飞行日志回归分析支撑外场与多机验证。</p>
             </div>
           </article>
         </div>
